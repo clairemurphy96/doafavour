@@ -24,7 +24,7 @@
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
             <img src="img/core-img/logo.png" alt="">
-            <div class="foode-preloader">
+            <div class="daf-preloader">
                 <span></span>
             </div>
         </div>
@@ -109,66 +109,54 @@
                                     
                                     <!-- Sign Up Form Area -->
                                     <div class="contact-form-area">
-                                        <form action="#" method="post">
+                                        
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-name" placeholder="Name">
+                                                        <input type="text" class="form-control" id="signupname" placeholder="Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-email" placeholder="Email">
+                                                        <input type="text" class="form-control" id="signupemail" placeholder="Email">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-password" placeholder="Password">
+                                                        <input type="text" class="form-control" id="signuppassword" placeholder="Password">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-password2" placeholder="Re-enter Password">
+                                                        <input type="text" class="form-control" id="signupaddress1" placeholder="Address Line 1">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-address1" placeholder="Address Line 1">
+                                                        <input type="text" class="form-control" id="signupaddress2" placeholder="Address Line 2">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-address2" placeholder="Address Line 2">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <select name="County" class="form-control"> 
-                                                            <option value="Cork">Cork</option>
-                                                            <option value="Clare">Clare</option>
-                                                            <option value="Kerry">Kerry</option>
-                                                            <option value="Limerick">Limerick</option>
-                                                            <option value="Tipperary">Tipperary</option>
-                                                            <option value="Kerry">Waterford</option>
-                                                       </select>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <select name="Country" class="form-control"> 
-                                                            <option value="Ireland">Ireland</option> 
-                                                       </select>
+                                                        <input type="text" class="form-control" id="signupcounty" placeholder="County">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="signup-skill" placeholder="Skill">
+                                                        <input type="text" class="form-control" id="signupcountry" placeholder="Country">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="signupskill" placeholder="Skill">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <button type="submit" class="btn foode-btn">Sign Up</button>
+                                                  <button id="submit_btn" class="btn foode-btn" onclick="storeData()">Sign Up</button>
                                                 </div>
                                                 
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -216,6 +204,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!-- ##### Footer Area Start ##### -->
+        
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -228,6 +217,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+         <!--Firebase App Database -->
+   
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+    projectId: "do-a-favour-eb2dd",
+    storageBucket: "do-a-favour-eb2dd.appspot.com",
+    messagingSenderId: "319443318218"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="js/signup.js"></script>
+<!--Firebase end -->
 </body>
 
 </html>

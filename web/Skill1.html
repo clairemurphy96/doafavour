@@ -128,7 +128,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">By Skill</li>
+                            <li class="breadcrumb-item"><a href='byskill.html'>By Skill</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Baking</li>
                         </ol>
                     </nav>
                 </div>
@@ -138,97 +139,31 @@
     <!-- ##### Breadcrumb Area End ##### -->
 
     <!-- ##### Skill Area Start ##### -->
-    <div class="skill-set">
-        <div class="container">
-           <div class="row">
-                <div class="col-12">
+    <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
                     <div class="section-heading">
-                        <h2>By Skill</h2>
+                        <h2>Baking</h2>
+                        <p>Live Posts</p>
                     </div>
                 </div>
-            </div> 
-            <div class="row">
-                <div class="col-12">
-                    <div class="instagram-slides owl-carousel">
-                       
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill1.jpg" alt="">
-                            <a href="Skill1.html"><i class="fa fa-instagram"></i>Baking</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill2.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Gardening</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill3.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>DIY</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill4.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Software Skills</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta5.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Hardware Skills</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta6.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Driving</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-        <div class="follow-us-instagram">
+    </div><br><br><br>
+    
+    <section class="contact-area">
         <div class="container">
-            
             <div class="row">
                 <div class="col-12">
-                    <div class="instagram-slides owl-carousel">
-                     
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta1.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta2.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta3.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta4.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta5.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta6.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Other</a>
-                        </div>
+                    <div class="contact-content-area">
+                        <div class="main-list" id="list_div">
+                            <div class="list-item">
+                                <h3>Users List:</h3>
+                            </div>
+                        </div>                                
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ##### Skill Area End ##### -->
-
+    </section>
+    
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
         <div class="container">
@@ -269,6 +204,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+             <!--Firebase App Database -->
+   
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+    projectId: "do-a-favour-eb2dd",
+    storageBucket: "do-a-favour-eb2dd.appspot.com",
+    messagingSenderId: "319443318218"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="js/signup.js"></script>
+<!--Firebase end -->
 </body>
 
 </html>

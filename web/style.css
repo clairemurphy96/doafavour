@@ -212,7 +212,7 @@ img {
   .preloader .circle-preloader {
     text-align: center;
     overflow: hidden; }
-    .preloader .circle-preloader .foode-preloader {
+    .preloader .circle-preloader .daf-preloader {
       position: relative;
       z-index: 10;
       width: 160px;
@@ -221,7 +221,7 @@ img {
       margin-top: 30px;
       background-color: #ebebeb;
       overflow: hidden; }
-      .preloader .circle-preloader .foode-preloader span {
+      .preloader .circle-preloader .daf-preloader span {
         width: 80px;
         height: 100%;
         position: absolute;
@@ -412,10 +412,10 @@ img {
     @media only screen and (max-width: 767px) {
       .header-area .logo-area {
         display: none; } }
-  .header-area .foode-main-menu {
+  .header-area .daf-main-menu {
     -webkit-transition-duration: 200ms;
     transition-duration: 200ms; }
-    .header-area .foode-main-menu .classy-navbar {
+    .header-area .daf-main-menu .classy-navbar {
       padding: 0;
       -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -423,64 +423,64 @@ img {
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
-        .header-area .foode-main-menu .classy-navbar {
+        .header-area .daf-main-menu .classy-navbar {
           -webkit-box-pack: justify;
           -ms-flex-pack: justify;
           justify-content: space-between; } }
       @media only screen and (max-width: 767px) {
-        .header-area .foode-main-menu .classy-navbar {
+        .header-area .daf-main-menu .classy-navbar {
           -webkit-box-pack: justify;
           -ms-flex-pack: justify;
           justify-content: space-between; } }
-      .header-area .foode-main-menu .classy-navbar .nav-brand {
+      .header-area .daf-main-menu .classy-navbar .nav-brand {
         display: none;
         -webkit-transition-duration: 500ms;
         transition-duration: 500ms; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
-          .header-area .foode-main-menu .classy-navbar .nav-brand {
+          .header-area .daf-main-menu .classy-navbar .nav-brand {
             display: block; } }
         @media only screen and (max-width: 767px) {
-          .header-area .foode-main-menu .classy-navbar .nav-brand {
+          .header-area .daf-main-menu .classy-navbar .nav-brand {
             display: block; } }
-    .header-area .foode-main-menu .classynav ul li a {
+    .header-area .daf-main-menu .classynav ul li a {
       padding: 0 25px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
-        .header-area .foode-main-menu .classynav ul li a {
+        .header-area .daf-main-menu .classynav ul li a {
           padding: 0 15px; } }
-      .header-area .foode-main-menu .classynav ul li a:hover, .header-area .foode-main-menu .classynav ul li a:focus {
+      .header-area .daf-main-menu .classynav ul li a:hover, .header-area .daf-main-menu .classynav ul li a:focus {
         color: #e59f80; }
-    .header-area .foode-main-menu .classynav ul li ul li a {
+    .header-area .daf-main-menu .classynav ul li ul li a {
       padding: 0 20px;
       letter-spacing: 0; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
-        .header-area .foode-main-menu .classynav ul li ul li a {
+        .header-area .daf-main-menu .classynav ul li ul li a {
           padding: 0 30px; } }
       @media only screen and (max-width: 767px) {
-        .header-area .foode-main-menu .classynav ul li ul li a {
+        .header-area .daf-main-menu .classynav ul li ul li a {
           padding: 0 30px; } }
-    .header-area .foode-main-menu .classynav ul li .megamenu {
+    .header-area .daf-main-menu .classynav ul li .megamenu {
       background-image: url(img/blog-img/1.jpg);
       background-position: center center;
       background-size: cover; }
-      .header-area .foode-main-menu .classynav ul li .megamenu .single-mega {
+      .header-area .daf-main-menu .classynav ul li .megamenu .single-mega {
         background-color: rgba(255, 255, 255, 0.95); }
-  .header-area .is-sticky .foode-main-menu {
+  .header-area .is-sticky .daf-main-menu {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 9999;
     box-shadow: 0 5px 50px 15px rgba(0, 0, 0, 0.2); }
-    .header-area .is-sticky .foode-main-menu .classy-navbar {
+    .header-area .is-sticky .daf-main-menu .classy-navbar {
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms;
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
       justify-content: space-between; }
-      .header-area .is-sticky .foode-main-menu .classy-navbar .nav-brand {
+      .header-area .is-sticky .daf-main-menu .classy-navbar .nav-brand {
         display: block; }
 
 /* :: 5.0 Hero Slides Area */
