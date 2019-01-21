@@ -51,7 +51,10 @@
                             <div class="top-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>                            
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a><i class="userloggedin" aria-hidden="true"></i>User logged in:</a>
+                                            <a><i><script> this.currentUser = firebase.auth().currentUser;
+                                                            console.log(this.currentUser); </script></i></a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +100,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="home.html">Home</a></li>
                                     <li><a href="#">Categories</a>
                                         <ul class="dropdown">
                                             <li><a href="byskill.html">By Skill</a></li>
@@ -106,7 +109,8 @@
                                     </li>                                                    
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="login.html">Log Out</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="#" id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -149,37 +153,39 @@
             </div> 
             <div class="row">
                 <div class="col-12">
+                    <div class="byskill-container">
                     <div class="instagram-slides owl-carousel">
                        
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill1.jpg" alt="">
+                            <img src="img/blog-img/byskill1.jpg" alt="" class="byskillimg">
                             <a href="Skill1.html"><i class="fa fa-instagram"></i>Baking</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill2.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Gardening</a>
+                            <img src="img/blog-img/byskill2.jpg" alt="" class="byskillimg">
+                            <a href="Skill2.html"><i class="fa fa-instagram"></i>Gardening</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill3.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>DIY</a>
+                            <img src="img/blog-img/byskill3.jpg" alt="" class="byskillimg">
+                            <a href="Skill3.html"><i class="fa fa-instagram"></i>DIY</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/byskill4.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Software Skills</a>
+                            <img src="img/blog-img/byskill4.jpg" alt="" class="byskillimg">
+                            <a href="Skill4.html"><i class="fa fa-instagram"></i>Hardware/Software Skills</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta5.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Hardware Skills</a>
+                            <img src="img/blog-img/byskill5.jpg" alt="" class="byskillimg">
+                            <a href="Skill5.html"><i class="fa fa-instagram"></i>Music</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta6.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Driving</a>
+                            <img src="img/blog-img/byskill6.jpg" alt="" class="byskillimg">
+                            <a href="Skill6.html"><i class="fa fa-instagram"></i>Driving</a>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -191,37 +197,39 @@
             
             <div class="row">
                 <div class="col-12">
+                    <div class="byskill-container">
                     <div class="instagram-slides owl-carousel">
                      
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta1.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                            <img src="img/blog-img/byskill7.jpg" alt="" class="byskillimg">
+                            <a href="Skill7.html"><i class="fa fa-instagram"></i>Babysitting</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta2.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                            <img src="img/blog-img/byskill8.jpg" alt="" class="byskillimg">
+                            <a href="Skill8.html"><i class="fa fa-instagram"></i>Cleaning</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta3.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                            <img src="img/blog-img/byskill9.jpg" alt="" class="byskillimg">
+                            <a href="Skill9.html"><i class="fa fa-instagram"></i>Photography</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta4.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                            <img src="img/blog-img/byskill10.jpeg" alt="" class="byskillimg">
+                            <a href="Skill10.html"><i class="fa fa-instagram"></i>Programming Skills</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta5.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
+                            <img src="img/blog-img/byskill11.png" alt="" class="byskillimg">
+                            <a href="Skill11.html"><i class="fa fa-instagram"></i>Languages</a>
                         </div>
 
                         <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta6.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Other</a>
+                            <img src="img/blog-img/byskill12.jpg" alt="" class="byskillimg">
+                            <a href="Skill12.html"><i class="fa fa-instagram"></i>Other</a>
                         </div>
+                     </div>
                     </div>
                 </div>
             </div>
@@ -245,15 +253,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </footer>
     <!-- ##### Footer Area Start ##### -->
@@ -267,8 +267,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins js -->
     <script src="js/plugins/plugins.js"></script>
+   
+     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

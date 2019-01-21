@@ -1,0 +1,276 @@
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Do A Favour</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+    projectId: "do-a-favour-eb2dd",
+    storageBucket: "do-a-favour-eb2dd.appspot.com",
+    messagingSenderId: "319443318218"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="js/signup2.js"></script>
+</head>
+<body>
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/logo.png" alt="">
+            <div class="daf-preloader">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Search Form -->
+                            <div class="search-form">
+                                <form action="#" method="get">
+                                    <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+
+                            <!-- Social Button -->
+                            <div class="top-social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Area -->
+        <div class="logo-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="img/core-img/breadcrumb-line.png" alt="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Sign Up</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+    
+       <section class="contact-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-content-area">
+                        <div class="row">
+
+                            <div class="col-12 col-lg-6">
+                                <div class="contact-content">
+                                    <h4>Sign Up</h4>
+ <div class="row">
+  <div class="col-12">
+ <div class="form-group">
+   <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Name..." />
+  </div>
+ </div> 
+ <div class="col-12">
+ <div class="form-group">
+   <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email..." />
+  </div>
+ </div> 
+  <div class="col-12">
+ <div class="form-group">
+   <input type="text" name="user_password" id="user_password" class="form-control" placeholder="Password..." />
+  </div>
+ </div> 
+  <div class="col-12">
+ <div class="form-group">
+   <input type="text" name="user_address1" id="user_address1" class="form-control" placeholder="Address Line 1..." />
+  </div>
+ </div>
+   <div class="col-12">
+ <div class="form-group">
+   <input type="text" name="user_address2" id="user_address2" class="form-control" placeholder="Address Line 2..." />
+  </div>
+ </div>
+  <div class="col-12">
+ <div class="form-group">
+            <select id="user_county" name="user_county" class="form-control">
+                            <option value="cork">Cork</option>
+                            <option value="clare">Clare</option>
+                            <option value="kerry">Kerry</option>
+                            <option value="limerick">Limerick</option>
+                            <option value="tipperary">Tipperary</option>
+                            <option value="waterford">Waterford</option>
+                            <option value="carlow">Carlow</option>
+                            <option value="dublin">Dublin</option>
+                            <option value="kildare">Kildare</option>
+                            <option value="kilkenny">Kilkenny</option>
+                            <option value="laois">Laois</option>
+                            <option value="longford">Longford</option>
+                            <option value="louth">Louth</option>
+                            <option value="meath">Meath</option>
+                            <option value="offaly">Offaly</option>
+                            <option value="westmeath">Westmeath</option>
+                            <option value="wexford">Wexford</option>
+                            <option value="wicklow">Wicklow</option>
+                            <option value="galway">Galway</option>
+                            <option value="leitrim">Leitrim</option>
+                            <option value="mayo">Mayo</option>
+                            <option value="roscommon">Roscommon</option>
+                            <option value="sligo">Sligo</option>
+                            <option value="cavan">Cavan</option>
+                            <option value="monaghan">Monaghan</option>
+                            <option value="donegal">Donegal</option>
+            </select>
+  </div>
+ </div>
+ <div class="col-12">
+            <div class="form-group">
+                <select id="user_country" name="user_country" class="form-control">
+                    <option value="Ireland">Ireland</option>
+                    <option value="uk">UK</option>
+                </select>
+            </div>
+          </div>
+ <div class="col-12">
+            <div class="form-group">
+                <select id="user_skill" name="user_skill" class="form-control">
+                        <option value="baking">Baking</option>
+                        <option value="gardening">Gardening</option>
+                        <option value="diy">DIY</option>
+                        <option value="softwareskills">Software Skills</option>
+                        <option value="other">Other</option>
+               </select>
+            </div>
+ </div>
+  <div class="col-12">
+            <div class="form-group">
+                <input type="text" name="user_other" class="form-control" id="user_other" placeholder="If other please state, else N/A...">
+            </div>
+    </div>
+     
+  <div class="col-12 col-lg-6">
+    <input type="button" value="Save" onclick="save_user();" />
+    <input type="button" value="Update" onclick="update_user();" />
+    <input type="button" value="Delete" onclick="delete_user();" />
+  </div>
+ </div>
+ 
+ <h3>Users List</h3>
+ 
+ <table id="tbl_users_list" border="1">
+  <tr>
+   <td>#ID</td>
+   <td>NAME</td>
+   <td>EMAIL</td>
+  </tr>
+ </table>
+ 
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+<!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                    <!-- Footer Social Info -->
+                    <div class="footer-social-info d-flex align-items-center justify-content-between">
+                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
+                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
+                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
+                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
+                    </div>
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="copywrite-text">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+        
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+ 
+</body>
+</html>

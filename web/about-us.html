@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Foode - Food Blog HTML5 Template</title>
+    <title>Do A Favour</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <!-- ##### Preloader ##### -->
+    <!-- Preloader  -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
             <img src="img/core-img/logo.png" alt="">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <!-- ##### Header Area Start ##### -->
+    <!-- Header Area Start -->
     <header class="header-area">
 
         <!-- Top Header Area -->
@@ -52,8 +52,9 @@
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                                <a><i class="userloggedin" aria-hidden="true"></i>User logged in:</a>
+                                            <a><i><script> this.currentUser = firebase.auth().currentUser;
+                                                            console.log(this.currentUser); </script></i></a>
                             </div>
                         </div>
                     </div>
@@ -99,72 +100,17 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="home.html">Home</a></li>
+                                    <li><a href="#">Categories</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="login.html">Archive Blog</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about-us.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="typography.html">Typography</a></li>
+                                            <li><a href="byskill.html">By Skill</a></li>
+                                            <li><a href="bylocation.html">By Location</a></li>                                          
                                         </ul>
-                                    </li>
-                                    <li><a href="#">Catagories</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">- Features</a></li>
-                                                <li><a href="#">- Food</a></li>
-                                                <li><a href="#">- Travel</a></li>
-                                                <li><a href="#">- Recipe</a></li>
-                                                <li><a href="#">- Bread</a></li>
-                                                <li><a href="#">- Breakfast</a></li>
-                                                <li><a href="#">- Meat</a></li>
-                                                <li><a href="#">- Fastfood</a></li>
-                                                <li><a href="#">- Salad</a></li>
-                                                <li><a href="#">- Soup</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">- Features</a></li>
-                                                <li><a href="#">- Food</a></li>
-                                                <li><a href="#">- Travel</a></li>
-                                                <li><a href="#">- Recipe</a></li>
-                                                <li><a href="#">- Bread</a></li>
-                                                <li><a href="#">- Breakfast</a></li>
-                                                <li><a href="#">- Meat</a></li>
-                                                <li><a href="#">- Fastfood</a></li>
-                                                <li><a href="#">- Salad</a></li>
-                                                <li><a href="#">- Soup</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">- Features</a></li>
-                                                <li><a href="#">- Food</a></li>
-                                                <li><a href="#">- Travel</a></li>
-                                                <li><a href="#">- Recipe</a></li>
-                                                <li><a href="#">- Bread</a></li>
-                                                <li><a href="#">- Breakfast</a></li>
-                                                <li><a href="#">- Meat</a></li>
-                                                <li><a href="#">- Fastfood</a></li>
-                                                <li><a href="#">- Salad</a></li>
-                                                <li><a href="#">- Soup</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">- Features</a></li>
-                                                <li><a href="#">- Food</a></li>
-                                                <li><a href="#">- Travel</a></li>
-                                                <li><a href="#">- Recipe</a></li>
-                                                <li><a href="#">- Bread</a></li>
-                                                <li><a href="#">- Breakfast</a></li>
-                                                <li><a href="#">- Meat</a></li>
-                                                <li><a href="#">- Fastfood</a></li>
-                                                <li><a href="#">- Salad</a></li>
-                                                <li><a href="#">- Soup</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="#">Travel</a></li>
+                                    </li>                                                    
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="#" id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -200,8 +146,8 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <div class="section-heading">
-                        <h2>About Us</h2>
-                        <p>New unique project about food</p>
+                        <h2><b>About Us</b></h2>
+                        <p>How to trade your talents <b>AND</b> save money!</p>
                     </div>
                 </div>
             </div>
@@ -209,32 +155,36 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <div class="about-content">
-                        <img src="img/blog-img/18.jpg" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi chitecto beatae vitae dicta sunt explicabo.</p>
+                        <center><img src="img/blog-img/swap.gif" alt=""></center>
+                        <p>Joining a skills exchange means you can swap a few hours of your time doing something your good at for services you would otherwise be paying hundreds of euro a year for.</p>
+                        <p>It can save you a small fortune, but those who use the exchanges say it can be even more rewarding than that.</p>
                         <blockquote>
-                            <h5>“That’s not to say you’ll have the exact same thing if you stop by: the restaurant’s menus change constantly, based on seasonal ingredients.”</h5>
+                            <h5>“That’s not just about saving money for services, it's also about making new friends and bringing a group of people together, and thats what I love most about DoAFavour.com!” - Mary O' Connor</h5>
                         </blockquote>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>The idea is to bring people together in a community or close range. Each member of the site has certain skills and services they can offer, and each one has needs they hope can be met by other members.</p>
+                       
+                        <p>The modern version usually works on a time basis, so that one hour of everyone’s time is worth exactly the same amount. If you put in an hour of work for another member of the community, you get a token. You can then swap that token for an hour of work from someone else in the community.</p>
+                        <h6><b>What if I don't have a skill you ask?</b></h6>
+                        <p>There's something out there for everyone below is a short list of just some of the skills our users avail of with many many more in others too!!</p>
+                        <ul>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> Baking.</li>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> Babysitting.</li>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> Cleaning.</li>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> DIY.</li>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> Music.</li>
+                            <li><i class="fa fa-circle" aria-hidden="true"></i> And a large list of OTHER.  <a href="byskill.html">CLICK HERE to see the full list</a></li>
+                        </ul>
+                        <p>It’s easy to assume you have nothing to offer in exchange, or nothing you need from it, but you’d be surprised.</p>
+                        <p>Each person who gets involved in a skills exchange will get something different from it. When Mary set up her account, she says a plumber decided to join the site as a marketing opportunity.
+                        People would ask for small jobs like fixing a dripping tap or mending a leaky pipe.
+                        When he did a good job of that, he would be their first call when it came to larger, paying jobs, and they would start to recommend him to their friends.</p>
+                        <p>She says that through word of mouth, he not only got enough work to stop him having to advertise anywhere else, but it was all local work, which drastically cut down the time he was travelling from job to job.</p>
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img src="img/blog-img/19.jpg" alt="">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <img src="img/blog-img/20.jpg" alt="">
+                                <center><img src="img/blog-img/22.jpg" alt=""></center>
                             </div>
                         </div>
-                        <p>Quisque nunc erat, pharetra ut cursus quis, tristique eu enim. Maecenas elementum dolor vel erat vestibulum malesuada. Pellentesque sed magna porta, finibus elit et, mollis lacus. Proin elementum metus nec tincidunt iaculis. Donec ut vulputate sem, venenatis ultricies felis. Praesent convallis mauris leo, a dignissim lorem bibendum eget. Duis sodales urna sed odio maximus egestas. Nulla molestie consequat mattis.</p>
-                        <p>Vestibulum non tristique metus. Morbi tempus nibh sed quam fringilla fringilla a a neque. In aliquet ex vitae eros convallis dictum. Suspendisse vulputate mauris id tincidunt rhoncus. Vestibulum sit amet nibh nisi.</p>
-                        <ul>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Quisque bibendum justo aliquet, aliquam mauris condimentum.</li>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Sed malesuada neque tempus, euismod magna ut.</li>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Vivamus lacinia nibh ac lorem mattis.</li>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Phasellus malesuada dolor eget velit cursus.</li>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Donec finibus ipsum a turpis volutpat, et tempor enim varius.</li>
-                            <li><i class="fa fa-circle" aria-hidden="true"></i> Maecenas laoreet nunc sed odio placerat.</li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h6><i>What are you waiting for sign-up today!</i></h6>
                         <div class="signature">
                             <img class="mb-0" src="img/core-img/signa.png" alt="">
                         </div>
@@ -244,62 +194,7 @@
         </div>
     </div>
 
-    <!-- ##### Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Follow Us On Instagram</h2>
-                        <span>@foodeblog</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="instagram-slides owl-carousel">
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta1.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta2.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta3.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta4.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta5.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-
-                        <!-- Single Instagram Slide -->
-                        <div class="single-instagram-slide">
-                            <img src="img/blog-img/insta6.jpg" alt="">
-                            <a href="#"><i class="fa fa-instagram"></i>Follow Me</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Instagram Area End ##### -->
+    
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -308,28 +203,13 @@
                 <div class="col-12">
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info d-flex align-items-center justify-content-between">
-                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
-                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
-                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
-                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
-                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
-                    </div>
-                    <!-- Footer Curve Line -->
-                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                   
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
+                    
                 </div>
             </div>
         </div>

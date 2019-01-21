@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Title -->
     <title>Do A Favour</title>
 
@@ -106,7 +109,8 @@
                                     </li>                                                    
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="login.html">Log Out</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="login.html" onclick="mainApp.logOut()">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -118,65 +122,215 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
-    <!-- ##### Breadcrumb Area Start ##### -->
+        <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <img src="img/core-img/breadcrumb-line.png" alt="">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Profile</li>
-                        </ol>
-                    </nav>
                 </div>
             </div>
         </div>
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
-    <div class="align-items-center">
-    <h1>Profile Page </h1>
-    </div>
-
-    
-
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Footer Curve Line -->
-                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info d-flex align-items-center justify-content-between">
-                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
-                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
-                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
-                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
-                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
-                    </div>
-                    <!-- Footer Curve Line -->
-                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                </div>
+<div class="row">
+      <div class="col-xs-12 col-sm-9">
+        
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__avatar">
+              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
+            <div class="profile__header">
+              <h4>Claire Murphy <small>Skill: DIY</small></h4>
+              <p class="text-muted">
+                BIO...
+              </p>
             </div>
+          </div>
         </div>
-    </footer>
-    <!-- ##### Footer Area Start ##### -->
+
+        <!-- User info -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User info</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>User ID</strong></th>
+                  <td>LRMgWStkSDtXpnvtLI0</td>
+                </tr>
+                <tr>
+                  <th><strong>Address</strong></th>
+                  <td>Ballyroberts, Castlelyons, Co. Cork</td>
+                </tr>
+                <tr>
+                  <th><strong>Country</strong></th>
+                  <td>Ireland</td>
+                </tr>
+                <tr>
+                  <th><strong>Email</strong></th>
+                  <td>clairemurphy@gmail.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Latest posts -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Latest posts</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__comments">
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>2 hours ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis. Voluptatibus odio perspiciatis non quisquam provident, quasi eaque officia.
+                  </div>
+                </div>
+              </div>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>5 hours ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
+                  </div>
+                </div>
+              </div>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>1 day ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+                <!-- Latest photos -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Uploaded Photos</h4>
+          </div>
+          <div class="panel-body">
+             <div class="row">
+                <div class="col-12 col-md-6">
+                    <img class="mb-30" src="img/blog-img/19.jpg" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <img class="mb-30" src="img/blog-img/20.jpg" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <img class="mb-30" src="img/blog-img/19.jpg" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <img class="mb-30" src="img/blog-img/20.jpg" alt="">
+               </div>
+             </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        
+        <!-- Contact user -->
+        <p>
+          <button onclick="ViewDaf()" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+            View DAF Account</button>
+            
+            <script> function ViewDaf() {
+                alert("You have no DAF coins");
+            }</script>
+        </p>
+
+        <hr class="profile__contact-hr">
+        
+        <!-- Contact info -->
+        <div class="profile__contact-info">
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Work number</h5>
+              (000)987-65-43
+            </div>
+          </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Mobile number</h5>
+              (000)987-65-43
+            </div>
+          </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-envelope-square"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">E-mail address</h5>
+              <a href="mailto:admin@domain.com">admin@domain.com</a>
+            </div>
+          </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Work address</h5>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
              <!--Firebase App Database -->
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
 <script>

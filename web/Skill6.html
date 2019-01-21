@@ -1,0 +1,264 @@
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Do A Favour</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+    projectId: "do-a-favour-eb2dd",
+    storageBucket: "do-a-favour-eb2dd.appspot.com",
+    messagingSenderId: "319443318218"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="js/skill6.js"></script>
+</head>
+<body>
+     <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/logo.png" alt="">
+            <div class="daf-preloader">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+<!-- Header Area Start -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Search Form -->
+                            <div class="search-form">
+                                <form action="Skill2.html" method="post">
+                                    <input type="text" name="search" id="searchBar" placeholder="Seach..." value="" autocomplete="on" class="form-control">
+                                    <button type="submit"><i class="fa fa-search" onclick="Search()"></i></button>
+                                </form>
+                            </div>
+
+                            <!-- Social Button -->
+                            <div class="top-social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Area -->
+        <div class="logo-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="daf-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar" id="foodeNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="home.html">Home</a></li>
+                                    <li><a href="#">Categories</a>
+                                        <ul class="dropdown">
+                                            <li><a href="byskill.html">By Skill</a></li>
+                                            <li><a href="bylocation.html">By Location</a></li>                                          
+                                        </ul>
+                                    </li>                                                    
+                                    <li><a href="about-us.html">About</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="#" onclick="mainApp.logOut()">Log Out</a></li>
+                                </ul>
+
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="img/core-img/breadcrumb-line.png" alt="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href='byskill.html'>By Skill</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Driving</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+    
+     <!-- ##### Skill Area Start ##### -->
+    <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <div class="section-heading">
+                        <h2>Driving</h2>
+                        <p>Live Posts</p>
+                        <button id="like" onclick="like()" >Like</button>
+                        <script type="text/javascript">
+                                    var likes = 1;
+                                    function like(){
+                                        document.getElementById("like").innerHTML=likes;
+                                        likes=likes+1;
+                                    }
+                        </script>
+                    </div>
+                </div>
+    </div><br><br><br>
+    
+    <section class="contact-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    
+                   <div class="contact-content-area">
+                        <div class="main-list" id="table_body">
+                            <div class="list-item">
+                                <h2>Live Posts:</h2>
+                                
+                           
+                            </div>
+                        </div> 
+                    </div><br><br>
+                        </div> 
+                    </div>
+
+    
+         <div class="contact-content-area">
+                        <div class="form-button">
+                        <h4 class="mb-30">Post Your Skill</h4>
+
+                        <div class="contact-form-area mb-50">
+                           
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="post_name" id="post_name" class="form-control" placeholder="Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                           <input type="text" name="post_location" id="post_location" class="form-control" placeholder="Location" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="post_message" id="post_message" cols="30" rows="10" placeholder="Write post here..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+    <input type="button" value="Post" class="btn foode-btn m-2" onclick="save_post();" />
+                 
+                        </div>
+             </div>
+ 
+ <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                    <!-- Footer Social Info -->
+                    <div class="footer-social-info d-flex align-items-center justify-content-between">
+                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
+                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
+                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
+                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
+                    </div>
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+        
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+ 
+</body>
+</html>
