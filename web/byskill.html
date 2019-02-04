@@ -49,12 +49,11 @@
 
                             <!-- Social Button -->
                             <div class="top-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a><i class="userloggedin" aria-hidden="true"></i>User logged in:</a>
-                                            <a><i><script> this.currentUser = firebase.auth().currentUser;
-                                                            console.log(this.currentUser); </script></i></a>
+                            <ul>
+                            <li class="logged-in">
+                              <p class="account-details" style="font-family:Copperplate Gothic Light;"></p>
+                            </li>   
+                            </ul>
                             </div>
                         </div>
                     </div>
@@ -158,32 +157,32 @@
                        
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill1.jpg" alt="" class="byskillimg">
-                            <a href="Skill1.html"><i class="fa fa-instagram"></i>Baking</a>
+                            <a href="Skill1.html"><i class="fa fa-birthday-cake"></i>Baking</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill2.jpg" alt="" class="byskillimg">
-                            <a href="Skill2.html"><i class="fa fa-instagram"></i>Gardening</a>
+                            <a href="Skill2.html"><i class="fa fa-tree"></i>Gardening</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill3.jpg" alt="" class="byskillimg">
-                            <a href="Skill3.html"><i class="fa fa-instagram"></i>DIY</a>
+                            <a href="Skill3.html"><i class="fa fa-shower"></i>DIY</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill4.jpg" alt="" class="byskillimg">
-                            <a href="Skill4.html"><i class="fa fa-instagram"></i>Hardware/Software Skills</a>
+                            <a href="Skill4.html"><i class="fa fa-desktop"></i>Hardware/Software Skills</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill5.jpg" alt="" class="byskillimg">
-                            <a href="Skill5.html"><i class="fa fa-instagram"></i>Music</a>
+                            <a href="Skill5.html"><i class="fa fa-music"></i>Music</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill6.jpg" alt="" class="byskillimg">
-                            <a href="Skill6.html"><i class="fa fa-instagram"></i>Driving</a>
+                            <a href="Skill6.html"><i class="fa fa-car"></i>Driving</a>
                         </div>
                     </div>
                     </div>
@@ -202,32 +201,32 @@
                      
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill7.jpg" alt="" class="byskillimg">
-                            <a href="Skill7.html"><i class="fa fa-instagram"></i>Babysitting</a>
+                            <a href="Skill7.html"><i class="fa fa-play"></i>Babysitting</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill8.jpg" alt="" class="byskillimg">
-                            <a href="Skill8.html"><i class="fa fa-instagram"></i>Cleaning</a>
+                            <a href="Skill8.html"><i class="fa fa-smile-o"></i>Cleaning</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill9.jpg" alt="" class="byskillimg">
-                            <a href="Skill9.html"><i class="fa fa-instagram"></i>Photography</a>
+                            <a href="Skill9.html"><i class="fa fa-camera-retro"></i>Photography</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill10.jpeg" alt="" class="byskillimg">
-                            <a href="Skill10.html"><i class="fa fa-instagram"></i>Programming Skills</a>
+                            <a href="Skill10.html"><i class="fa fa-keyboard-o"></i>Programming Skills</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill11.png" alt="" class="byskillimg">
-                            <a href="Skill11.html"><i class="fa fa-instagram"></i>Languages</a>
+                            <a href="Skill11.html"><i class="fa fa-language"></i>Languages</a>
                         </div>
 
                         <div class="single-instagram-slide">
                             <img src="img/blog-img/byskill12.jpg" alt="" class="byskillimg">
-                            <a href="Skill12.html"><i class="fa fa-instagram"></i>Other</a>
+                            <a href="Skill12.html"><i class="fa fa-question"></i>Other</a>
                         </div>
                      </div>
                     </div>
@@ -268,13 +267,34 @@
     <!-- All Plugins js -->
     <script src="js/plugins/plugins.js"></script>
    
-     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+     <<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+                <script>
+                  // Initialize Firebase
+                  var config = {
+                    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+                    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+                    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+                    projectId: "do-a-favour-eb2dd",
+                    storageBucket: "do-a-favour-eb2dd.appspot.com",
+                    messagingSenderId: "319443318218"
+                  };
+                  firebase.initializeApp(config);
+                  
+                  // make auth and firestore references
+                        const auth = firebase.auth();
+                        const db = firebase.firestore();
+                       
+                </script>
+    
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-    <script src="js/firebase.js"></script>
-    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

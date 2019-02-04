@@ -14,6 +14,9 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     
  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
  <script>
@@ -193,6 +196,11 @@
                         <div class="contact-form-area mb-50">
                            
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                           <input type="email" name="post_email" id="post_email" class="form-control" placeholder="Insert email address you would like to recieve emails to..." />
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <input type="text" name="post_name" id="post_name" class="form-control" placeholder="Name" />
@@ -215,6 +223,47 @@
                  
                         </div>
              </div>
+            
+             <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center">Send Email</h4>
+        </div>
+        <div class="modal-body">
+       <form id="contact-form">
+        <div class="form-group center-block">
+          <label for="inputEmail">Their Email</label>
+          <div class="form-control contact-input" id="inputEmail">
+        </div>
+        <div class="form-group center-block">
+          <label for="inputName">Your Name</label>
+          <input type="text" class="form-control contact-input" id="inputName" placeholder="Name" name="name">
+        </div>
+        <div class="form-group center-block">
+          <label for="inputMessage">Your Reply Message</label>
+          <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Your Message" name="message"></textarea>
+        </div>
+        <input type="hidden" name="_gotcha" class="display-none">
+        <div class="text-center">
+          <button class="btn btn-default" type="submit" id="email-submit-btn" value="Send">
+            Submit
+          </button>
+        </div>
+        <span></span>
+      </form>    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
  
  <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -262,3 +311,4 @@
  
 </body>
 </html>
+

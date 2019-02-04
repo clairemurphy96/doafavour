@@ -26,7 +26,7 @@ var tblPosts = document.getElementById('tbl_posts_list');
    var post_location = document.getElementById('post_location').value; 
    var post_name = document.getElementById('post_name').value;
   
-   var uid = firebase.database().ref().child('diyskills').push().key;
+   var uid = firebase.database(currentuser.uid).ref().child('diyskills').push().key;
    
    var data = {
     user_id: uid,

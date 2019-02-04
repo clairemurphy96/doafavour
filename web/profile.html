@@ -52,9 +52,11 @@
 
                             <!-- Social Button -->
                             <div class="top-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>                            
+                            <ul>
+                                <li class="logged-in">
+                                    <p class="account-details" style="font-family:Copperplate Gothic Light;"></p>
+                                </li>   
+                            </ul>                       
                             </div>
                         </div>
                     </div>
@@ -110,7 +112,7 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="profile.html">Profile</a></li>
-                                    <li><a href="login.html" onclick="mainApp.logOut()">Log Out</a></li>
+                                    <li><a href='#' id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -148,10 +150,10 @@
               <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
             </div>
             <div class="profile__header">
-              <h4>Claire Murphy <small>Skill: DIY</small></h4>
-              <p class="text-muted">
-                BIO...
-              </p>
+                <h5>Name: </h5><h4 class="profile-name"></h4><h5>Skill: </h5><h4 class="profile-skill"></h4>
+              
+                <h5>BIO:</h5><h4 class="profile-bio"></h4>
+            
             </div>
           </div>
         </div>
@@ -166,19 +168,19 @@
               <tbody>
                 <tr>
                   <th><strong>User ID</strong></th>
-                  <td>LRMgWStkSDtXpnvtLI0</td>
+                  <td><div class="profile-id"></div></td>
                 </tr>
                 <tr>
                   <th><strong>Address</strong></th>
-                  <td>Ballyroberts, Castlelyons, Co. Cork</td>
+                  <td><div class="profile-address"></div></td>
                 </tr>
                 <tr>
                   <th><strong>Country</strong></th>
-                  <td>Ireland</td>
+                  <td><div class="profile-country"></div></td>
                 </tr>
                 <tr>
                   <th><strong>Email</strong></th>
-                  <td>clairemurphy@gmail.com</td>
+                  <td><div class="profile-email"></div></td>
                 </tr>
               </tbody>
             </table>
@@ -292,38 +294,37 @@
         <div class="profile__contact-info">
           <div class="profile__contact-info-item">
             <div class="profile__contact-info-icon">
-              <i class="fa fa-phone"></i>
+              <i class="fa fa-reply"></i>
             </div>
             <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Work number</h5>
-              (000)987-65-43
+                <h3 class="profile__contact-info-heading"><b>Notifications</b></h3>
             </div>
           </div>
           <div class="profile__contact-info-item">
             <div class="profile__contact-info-icon">
-              <i class="fa fa-phone"></i>
+              <i class="fa fa-desktop"></i>
             </div>
             <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Mobile number</h5>
-              (000)987-65-43
+              <h5 class="profile__contact-info-heading">Accept Token?</h5>
+              Yes / No
             </div>
           </div>
           <div class="profile__contact-info-item">
             <div class="profile__contact-info-icon">
-              <i class="fa fa-envelope-square"></i>
+              <i class="fa fa-music"></i>
             </div>
             <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">E-mail address</h5>
-              <a href="mailto:admin@domain.com">admin@domain.com</a>
+              <h5 class="profile__contact-info-heading">Accept Token?</h5>
+              Yes / No
             </div>
           </div>
           <div class="profile__contact-info-item">
             <div class="profile__contact-info-icon">
-              <i class="fa fa-map-marker"></i>
+              <i class="fa fa-car"></i>
             </div>
             <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Work address</h5>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              <h5 class="profile__contact-info-heading">Accept Token?</h5>
+              Yes / No 
             </div>
           </div>
         </div>
@@ -344,9 +345,16 @@
     messagingSenderId: "319443318218"
   };
   firebase.initializeApp(config);
+  
+                    // make auth and firestore references
+                        const auth = firebase.auth();
+                        const db = firebase.firestore();
+                        // update firestore settings
+                        db.settings({ timestampsInSnapshots: true });
 </script>
 
-<script src="js/firebase.js"></script>
+<script src="js/profile.js"></script>
+
 <!--Firebase end -->
 
     <!-- ##### All Javascript Script ##### -->

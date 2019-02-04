@@ -12,10 +12,12 @@ var tblPosts = document.getElementById('tbl_posts_list');
    var cellName = row.insertCell(1);
    var cellEmail = row.insertCell(2);
    var cellMessage = row.insertCell(3);
+   var cellLocation = row.insertCell(4);
    cellId.appendChild(document.createTextNode(childKey));
    cellName.appendChild(document.createTextNode(childData.post_name));
    cellEmail.appendChild(document.createTextNode(childData.post_location));
    cellMessage.appendChild(document.createTextNode(childData.post_message));
+   cellLocation.appendChild(document.createTextNode(childData.post_email));
    
    rowIndex = rowIndex + 1;
     });
@@ -25,6 +27,7 @@ var tblPosts = document.getElementById('tbl_posts_list');
    var post_message = document.getElementById('post_message').value;
    var post_location = document.getElementById('post_location').value; 
    var post_name = document.getElementById('post_name').value;
+   var post_email = document.getElementById('post_email').value;
   
    var uid = firebase.database().ref().child('cleaningskills').push().key;
    
@@ -32,8 +35,9 @@ var tblPosts = document.getElementById('tbl_posts_list');
     user_id: uid,
     post_name: post_name,
     post_location: post_location,
-    post_message: post_message
-   }
+    post_message: post_message,
+    post_email: post_email
+   };
    
    var updates = {};
    updates['/cleaningskills/' + uid] = data;
@@ -80,8 +84,11 @@ var roofRef = firebase.database().ref().child("cleaningskills");
         var name = snap.child("post_name").val();
         var location = snap.child("post_location").val();
         var message = snap.child("post_message").val();
+        var email = snap.child("post_email").val();
         
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p>Name: " + name + "</p><p> Location: " + location + "</p><p> Message: " + message + "</p><a href='messenger.html' class='btn foode-btn btn-sm'>Reply</a><button id='like' onclick='like();'>Like</button></div></div>");
+        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p>Name: " + name + "</p><p> Location: " + location + "</p><p> Message: " + message + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
+        
+        $(inputEmail).append(email); 
     });
     
 function like(){
@@ -90,5 +97,25 @@ function like(){
         likes=likes+1;
                 }
 
+$(document).ready(function() {
+  $('#contact-form').submit(function(e) {
+    var name    = document.getElementById('inputName');
+    var email   = document.getElementById('inputEmail');
+    var message = document.getElementById('inputMessage');
 
-
+    if (!name.value || !email.value || !message.value) {
+      alertify.error("Please check your entries");
+      return false;
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: '//formspree.io/claireemxx@hotmail.com',
+        data: $('#contact-form').serialize(),
+        datatype: 'json'
+      });
+      e.preventDefault();
+      $(this).get(0).reset();
+      alertify.success("Message sent");
+    }
+  });
+});

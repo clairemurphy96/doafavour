@@ -1,11 +1,15 @@
 /* global auth, firebase */
 
+const auth = firebase.auth();
+
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
     console.log('user logged in: ', user);
+    setupUI(user);
   } else {
     console.log('user logged out');
+    setupUI();
   }
 });
 
@@ -18,10 +22,13 @@ signupForm.addEventListener('submit', (e) => {
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
 
-  const db = firebase.firestore();
    // sign up the user & add firestore data
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     return db.collection('users').doc(cred.user.uid).set({
+      name: signupForm['signup-name'].value,
+      address: signupForm['signup-address'].value,
+      country: signupForm['signup-country'].value,
+      skill: signupForm['signup-skill'].value,
       bio: signupForm['signup-bio'].value
     });
   }).then(() => {
