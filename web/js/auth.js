@@ -1,6 +1,7 @@
 /* global auth, firebase */
 
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
@@ -29,7 +30,8 @@ signupForm.addEventListener('submit', (e) => {
       address: signupForm['signup-address'].value,
       country: signupForm['signup-country'].value,
       skill: signupForm['signup-skill'].value,
-      bio: signupForm['signup-bio'].value
+      bio: signupForm['signup-bio'].value,
+      DAFcoins: 0
     });
   }).then(() => {
     // close the signup modal & reset form

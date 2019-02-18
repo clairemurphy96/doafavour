@@ -1,3 +1,4 @@
+//Javascript page with bootstrap
 (function ($) {
     'use strict';
 

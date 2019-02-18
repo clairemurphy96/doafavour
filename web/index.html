@@ -16,27 +16,8 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
-    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script> 
-            <script>
-                  // Initialize Firebase
-                  var config = {
-                    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
-                    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
-                    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
-                    projectId: "do-a-favour-eb2dd",
-                    storageBucket: "do-a-favour-eb2dd.appspot.com",
-                    messagingSenderId: "319443318218"
-                  };
-                  firebase.initializeApp(config);
-                       
-            </script>
-            
-  <script src="js/index.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/searchbar.js"></script>
-  
 </head>
 
 <body>
@@ -61,9 +42,9 @@
                         <div class="top-header-content d-flex align-items-center justify-content-between">
                             
 
-                            <!-- Auth -->
+                            <!-- Nav Bar -->
                             <div class="top-social-info">
-                                <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
             </li>
@@ -138,6 +119,7 @@
       </form>
     </div>
   </div>
+
   <!-- LOGIN MODAL -->
   <div id="modal-login" class="modal">
     <div class="modal-content">
@@ -165,16 +147,17 @@
     </div>
   </div>
 
-        <!-- Logo Area -->
+        <!-- DAF Logo Area -->
         <div class="logo-area text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <!-- Nav brand -->
-                        <a href="home.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                        <!-- DAF Logo brand -->
+                        <a href="byskill.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
                         <br><br><br>
                         <h4> Share your skill and exchange it with others for theirs! </h4>
                         <br><br>
+                        <!-- Search Bar for searching skills -->
                         <div class="search-form">
                             <form action="Search" method="post">
                                 <input type="text" id="myInput" onkeyup="FindSkill()" placeholder="Search for skills.." title="Type in a skill">
@@ -196,20 +179,16 @@
                             </form>
                             <br><br><br>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
     </header>
     <!-- ##### Header Area End ##### -->
+    <!-- Footer with breaklines -->
     <footer>
         <br><br>
     </footer>
-   
-    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-database.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -222,7 +201,34 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+    <!-- Firebase Code and Packages -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-app.js"></script>
+                <script>
+                  // Initialize Firebase
+                  var config = {
+                    apiKey: "AIzaSyAmDqnwNbsG3f64-vMkPYlAPu_Luj5EXdo",
+                    authDomain: "do-a-favour-eb2dd.firebaseapp.com",
+                    databaseURL: "https://do-a-favour-eb2dd.firebaseio.com",
+                    projectId: "do-a-favour-eb2dd",
+                    storageBucket: "do-a-favour-eb2dd.appspot.com",
+                    messagingSenderId: "319443318218"
+                  };
+                  firebase.initializeApp(config);
+                  
+                       
+                </script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-database.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
+  <!-- Javascript pages relating to this html page -->
+  <script src="js/searchbar.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>

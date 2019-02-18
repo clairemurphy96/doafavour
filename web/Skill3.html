@@ -14,8 +14,12 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     
  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
  <script>
   // Initialize Firebase
   var config = {
@@ -29,6 +33,7 @@
   firebase.initializeApp(config);
 </script>
 <script src="js/skill3.js"></script>
+<script src="js/loggedin.js"></script>
 </head>
 <body>
      <!-- ##### Preloader ##### -->
@@ -50,19 +55,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Search Form -->
-                            <div class="search-form">
-                                <form action="Skill2.html" method="post">
-                                    <input type="text" name="search" id="searchBar" placeholder="Seach..." value="" autocomplete="on" class="form-control">
-                                    <button type="submit"><i class="fa fa-search" onclick="Search()"></i></button>
-                                </form>
-                            </div>
-
-                            <!-- Social Button -->
+                           
+                            <!-- Logged In As -->
                             <div class="top-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>                            
+                            <ul>
+                            <li class="logged-in">
+                              <p class="account-details" style="font-family:Copperplate Gothic Light;"></p>
+                            </li>   
+                            </ul>                            
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
+                                    <li><a href="index.html">Home</a></li>
                                     <li><a href="#">Categories</a>
                                         <ul class="dropdown">
                                             <li><a href="byskill.html">By Skill</a></li>
@@ -118,7 +118,7 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="profile.html">Profile</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="#" onclick="mainApp.logOut()">Log Out</a></li>
+                                    <li><a href="#" id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -155,15 +155,7 @@
                 <div class="col-12 col-lg-10">
                     <div class="section-heading">
                         <h2>DIY</h2>
-                        <p>Live Posts</p>
-                        <button id="like" onclick="like()" >Like</button>
-                        <script type="text/javascript">
-                                    var likes = 1;
-                                    function like(){
-                                        document.getElementById("like").innerHTML=likes;
-                                        likes=likes+1;
-                                    }
-                        </script>
+                        <p><i>Live Posts</i></p>
                     </div>
                 </div>
     </div><br><br><br>
@@ -191,8 +183,13 @@
                         <h4 class="mb-30">Post Your Skill</h4>
 
                         <div class="contact-form-area mb-50">
-                           
+                           <form id="postSkill-form">
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                           <input type="email" name="post_email" id="post_email" class="form-control" placeholder="Insert email address you would like to recieve emails to..." />
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <input type="text" name="post_name" id="post_name" class="form-control" placeholder="Name" />
@@ -209,12 +206,54 @@
                                         </div>
                                     </div>
                                 </div>
+                           </form>
                         </div>
 
     <input type="button" value="Post" class="btn foode-btn m-2" onclick="save_post();" />
                  
                         </div>
              </div>
+            
+             <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center">Send Email</h4>
+        </div>
+        <div class="modal-body">
+       <form id="contact-form">
+        <div class="form-group center-block">
+          <label for="inputEmail">Their Email</label>
+          <div class="form-control contact-input" id="inputEmail">
+        </div>
+        <div class="form-group center-block">
+          <label for="inputName">Your Name</label>
+          <input type="text" class="form-control contact-input" id="inputName" placeholder="Name" name="name">
+        </div>
+        <div class="form-group center-block">
+          <label for="inputMessage">Your Reply Message</label>
+          <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Your Message" name="message"></textarea>
+        </div>
+        <input type="text" name="_gotcha" class="display-none">
+        <div class="text-center">
+          <button class="btn btn-default" type="submit" id="email-submit-btn" value="Send">
+            Submit
+          </button>
+        </div>
+        <span></span>
+      </form>    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
  
  <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -223,16 +262,7 @@
                 <div class="col-12">
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info d-flex align-items-center justify-content-between">
-                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
-                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
-                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
-                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
-                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
-                    </div>
+                   
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
                 </div>
@@ -262,3 +292,4 @@
  
 </body>
 </html>
+

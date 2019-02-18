@@ -15,10 +15,12 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     
+    <!-- Firebase Code and Packages -->
  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
  <script>
   // Initialize Firebase
   var config = {
@@ -31,7 +33,9 @@
   };
   firebase.initializeApp(config);
 </script>
+<!-- Javascript pages relating to this html page -->
 <script src="js/skill10.js"></script>
+<script src="js/loggedin.js"></script>
 </head>
 <body>
      <!-- ##### Preloader ##### -->
@@ -53,19 +57,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Search Form -->
-                            <div class="search-form">
-                                <form action="Skill2.html" method="post">
-                                    <input type="text" name="search" id="searchBar" placeholder="Seach..." value="" autocomplete="on" class="form-control">
-                                    <button type="submit"><i class="fa fa-search" onclick="Search()"></i></button>
-                                </form>
-                            </div>
-
-                            <!-- Social Button -->
+                          
+                            <!-- Logged In As -->
                             <div class="top-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>                            
+                            <ul>
+                            <li class="logged-in">
+                              <p class="account-details" style="font-family:Copperplate Gothic Light;"></p>
+                            </li>   
+                            </ul>                            
                             </div>
                         </div>
                     </div>
@@ -111,7 +110,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
+                                    <li><a href="index.html">Home</a></li>
                                     <li><a href="#">Categories</a>
                                         <ul class="dropdown">
                                             <li><a href="byskill.html">By Skill</a></li>
@@ -121,7 +120,7 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="profile.html">Profile</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="#" onclick="mainApp.logOut()">Log Out</a></li>
+                                    <li><a href="#" id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -158,19 +157,12 @@
                 <div class="col-12 col-lg-10">
                     <div class="section-heading">
                         <h2>Programming Skills</h2>
-                        <p>Live Posts</p>
-                        <button id="like" onclick="like()" >Like</button>
-                        <script type="text/javascript">
-                                    var likes = 1;
-                                    function like(){
-                                        document.getElementById("like").innerHTML=likes;
-                                        likes=likes+1;
-                                    }
-                        </script>
+                        <p><i>Live Posts</i></p>
                     </div>
                 </div>
     </div><br><br><br>
     
+    <!-- Posts coming from database -->
     <section class="contact-area">
         <div class="container">
             <div class="row">
@@ -180,21 +172,19 @@
                         <div class="main-list" id="table_body">
                             <div class="list-item">
                                 <h2>Live Posts:</h2>
-                                
-                           
                             </div>
                         </div> 
                     </div><br><br>
                         </div> 
                     </div>
 
-    
+    <!-- Write posts to database -->
          <div class="contact-content-area">
                         <div class="form-button">
                         <h4 class="mb-30">Post Your Skill</h4>
 
                         <div class="contact-form-area mb-50">
-                           
+                           <form id="postSkill-form">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
@@ -217,14 +207,15 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
+                                </form>
+                            </div>
 
     <input type="button" value="Post" class="btn foode-btn m-2" onclick="save_post();" />
                  
                         </div>
              </div>
             
-             <!-- Modal -->
+             <!-- Reply and send email Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     

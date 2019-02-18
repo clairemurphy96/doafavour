@@ -1,3 +1,4 @@
+//DELETE 
 var app = angular.module('chatApp', ['firebase']);
 
 app.controller('ChatController', function($scope, $firebaseArray) {

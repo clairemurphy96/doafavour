@@ -1,3 +1,4 @@
+//DELETE
 var mainApp ={};
 var userloggedin = document.getElementById("userloggedin").value();
 

@@ -17,7 +17,7 @@ auth.onAuthStateChanged(user => {
 
 const loggedin = (user) => {
   if (user) {
-    // account info
+    // email info
     const html = `
       <div>Logged in as ${user.email}</div>
     `;

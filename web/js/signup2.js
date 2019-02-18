@@ -1,4 +1,4 @@
-
+//DELETE
   var tblUsers = document.getElementById('tbl_users_list');
   var databaseRef = firebase.database().ref('users/');
   var rowIndex = 1;

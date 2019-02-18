@@ -22,12 +22,14 @@ var tblPosts = document.getElementById('tbl_posts_list');
    rowIndex = rowIndex + 1;
     });
   });
-   
+  
+//function for button for saving posts to the database
   function save_post(){
    var post_message = document.getElementById('post_message').value;
    var post_location = document.getElementById('post_location').value; 
    var post_name = document.getElementById('post_name').value;
    var post_email = document.getElementById('post_email').value;
+   const postSkillForm = document.querySelector('#postSkill-form');
   
    var uid = firebase.database().ref().child('otherskills').push().key;
    
@@ -45,6 +47,7 @@ var tblPosts = document.getElementById('tbl_posts_list');
    
    alert('The post is created successfully!');
    reload_page();
+   postSkillForm.reset();
   }
   
   function update_user(){
@@ -77,6 +80,7 @@ var tblPosts = document.getElementById('tbl_posts_list');
    window.location.reload();
   }
   
+    //Writing posts back from the database using innerHTML
 var roofRef = firebase.database().ref().child("otherskills");
     
     roofRef.on("child_added", snap => {
@@ -97,6 +101,7 @@ function like(){
         likes=likes+1;
                 }
 
+//function for writing emails
 $(document).ready(function() {
   $('#contact-form').submit(function(e) {
     var name    = document.getElementById('inputName');

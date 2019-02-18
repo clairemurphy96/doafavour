@@ -1,3 +1,4 @@
+//DELETE
 (function(){
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
     var uiConfig = {

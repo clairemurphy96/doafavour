@@ -1,3 +1,4 @@
+//Search for skills pages in index.html
 function FindSkill() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");

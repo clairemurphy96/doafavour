@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
 
 </head>
 
@@ -42,15 +43,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Search Form -->
-                            <div class="search-form">
-                                <form action="#" method="get">
-                                    <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
-
-                            <!-- Social Button -->
+                         
+                            <!-- Logged In As -->
                             <div class="top-social-info">
                             <ul>
                                 <li class="logged-in">
@@ -102,7 +96,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
+                                    <li><a href="index.html">Home</a></li>
                                     <li><a href="#">Categories</a>
                                         <ul class="dropdown">
                                             <li><a href="byskill.html">By Skill</a></li>
@@ -111,7 +105,8 @@
                                     </li>                                                    
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="login.html" onclick="mainApp.logOut()">Log Out</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="#" id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -147,7 +142,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                       <select name="County" class="form-control">
+                                                       <select name="County" class="form-control" id="countrylist" required>
                                                             <option value="Cork">Cork</option>
                                                             <option value="Clare">Clare</option>
                                                             <option value="Kerry">Kerry</option>
@@ -193,7 +188,7 @@
                         </div> 
                         </div>
                     
-                     <!-- Modal -->
+                                 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -230,7 +225,6 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
     </div>
   </div>
                     <!-- Footer Curve Line -->
@@ -266,18 +260,14 @@
                   };
                   firebase.initializeApp(config);
                   
-                  // make auth and firestore references
-                        const auth = firebase.auth();
-                        const db = firebase.firestore();
                        
                 </script>
-    
-                    <script src="js/loggedin.js"></script>
-                    <script src="js/bylocation.js"></script>
-    
-  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+                
+    <script src="js/bylocation.js"></script>
+                       
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-database.js"></script>  
     
 
 </body>

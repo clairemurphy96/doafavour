@@ -42,13 +42,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Search Form -->
-                            <div class="search-form">
-                                <form action="#" method="get">
-                                    <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
 
                             <!-- Social Button -->
                             <div class="top-social-info">
@@ -252,48 +245,93 @@
           </div>
         </div>
         
-                <!-- Latest photos -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          <h4 class="panel-title">Uploaded Photos</h4>
-          </div>
-          <div class="panel-body">
-             <div class="row">
-                <div class="col-12 col-md-6">
-                    <img class="mb-30" src="img/blog-img/19.jpg" alt="">
-                </div>
-                <div class="col-12 col-md-6">
-                    <img class="mb-30" src="img/blog-img/20.jpg" alt="">
-                </div>
-                <div class="col-12 col-md-6">
-                    <img class="mb-30" src="img/blog-img/19.jpg" alt="">
-                </div>
-                <div class="col-12 col-md-6">
-                    <img class="mb-30" src="img/blog-img/20.jpg" alt="">
-               </div>
-             </div>
-          </div>
-        </div>
-
+        
       </div>
       <div class="col-xs-12 col-sm-3">
         
         <!-- Contact user -->
         <p>
-          <button onclick="ViewDaf()" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+          <button id="myBtn" class="profile__contact-btn btn btn-lg btn-block btn-info">
             View DAF Account</button>
-            
-            <script> function ViewDaf() {
-                alert("You have no DAF coins");
-            }</script>
         </p>
+         <!-- View DAF Account Modal -->
+            <div id="myModal" class="profilemodal">
+         <!-- Modal content -->
+              <div class="profilemodal-content">
+            <div class="profilemodal-header">
+              <span class="close">&times;</span>
+              <h2 style="font-family:Berlin Sans FB Demi;"> DAF Account</h2>
+            </div>
+            <div class="profilemodal-body">
+              <form id="dafaccount-form">
+                  <br><h3>Your current balance is:</h3><p class="dafcoins" id="dafbalance"> </p>
+              </form>
+            </div>
+          </div>
+            </div>
+         
+         <!-- Send DAF Coins Modal -->
+            <div id="SendCoinsModal" class="profilemodal">
+         <!-- Modal content -->
+              <div class="profilemodal-content">
+            <div class="profilemodal-header">
+              <span class="sendclose">&times;</span>
+              <h2 style="font-family:Berlin Sans FB Demi;"><b>Send DAF Coins</b></h2>
+            </div><br>
+            <div class="profilemodal-body">
+                <form id="sendcoins-form">
+                <div class="input-field">
+                        <input type="text" id="your-uid" required />
+                        <label for="your-uid">Please enter your user ID</label>
+                    </div><br> 
+                    <div class="input-field">
+                        <input type="text" id="sendcoins-uid" list='uidlist' required />
+                        <label for="sendcoins-uid">User ID of whom you will be sending the coins to (Double click to see names of users)</label>
+                        <datalist id='uidlist'>
+                            <option label='Claire Murphy' value='PIsTakNKA0QU2vctdIVmKL4SMvg1'>
+                            <option label='Laura Bartley' value='SFkZzzp8o4fJCXTSuyZMIS8bvxi1'>
+                            <option label='Tom Collins' value='RITShpiypyUShaaYXmb6xRbldFF2'>
+                            <option label='Pete Matthews' value='L6qmrKrsP2NrRjwym3MuzJrUhL93'>    
+                        </datalist>
+                    </div><br> 
+                    <div class="input-field">
+                      <input type="number" id="sendcoins-hours" value="1" required />
+                      <label for="sendcoins-hours">Please enter the hours completed (e.g. 1 hour = 1 DAF Coin)</label>
+                    </div><br>
+                    <h4>Current Balance:</h4><p id="newbalance"></p>
+                    <h4>- DAF coins being sent:</h4><p id="hours"></p>
+                    <h4>= New balance total: </h4><p id="total"></p>
+                    <p id="sentcoinsbal" style="visibility: hidden"></p>
+                    <input type="button" onclick="sendCoins()" class="btn foode-btn m-2 blue darken-2 z-depth-0" value="Send"><br>
+                </form>
+              </div>
+              <div class="profilemodal-footer">
+                          <!-- ##### Breadcrumb Area Start ##### -->
+                <div class="breadcrumb-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="img/core-img/breadcrumb-line.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+                <h3> </h3>
+              </div>
+          </div>
+            </div>
 
         <hr class="profile__contact-hr">
         
         <!-- Contact info -->
         <div class="profile__contact-info">
           <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
+            <div class="profile__contact-info-body">
+                <button id="sendcoins" class="profile__contact-btn btn btn-lg btn-block btn-info">
+                Send DAF coins</button>
+            </div>
+              <div class="profile__contact-info-icon">
               <i class="fa fa-reply"></i>
             </div>
             <div class="profile__contact-info-body">
@@ -332,6 +370,7 @@
       </div>
     </div>
 </div>
+    
              <!--Firebase App Database -->
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
 <script>
