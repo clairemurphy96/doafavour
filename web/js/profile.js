@@ -20,9 +20,21 @@ const profileCountry = document.querySelector('.profile-country');
 const profileName = document.querySelector('.profile-name');
 const profileSkill = document.querySelector('.profile-skill');
 const DAFcoins = document.querySelector('.dafcoins');
-const DAFcoinsAccount = document.querySelector('.dafcoinsaccount');
 const dafbalance = document.getElementById("newbalance");
+var balance;
+var toUserCoins;
+var toUserInput = document.getElementById("your-uid");
 
+//function thats passed through varaible to get the value of the DAFcoins field of user were sending coins to 
+function myFunction(input){
+    var toID = document.getElementById("sendcoins-uid").value;
+        db.collection('users').doc(toID).get().then(doc => {
+        console.log('toUsersbal', doc.data().DAFcoins);
+        toUserCoins = doc.data().DAFcoins;
+    });
+}
+
+//If the user is logged in it will access the database for this information and display it 
 const setupUI = (user) => {
   if (user) {
     // email info
@@ -79,14 +91,17 @@ const setupUI = (user) => {
     
     //number of daf coins from logged in user from database
     db.collection('users').doc(user.uid).get().then(doc => {
+        console.log(doc)
+        balance = doc.data().DAFcoins; //reading as a number 
       var dafcoin = `
       <div>${doc.data().DAFcoins}</div>
     `;
-    DAFcoins.innerHTML = dafcoin;
+    DAFcoins.innerHTML = dafcoin; //reading in a string
     dafbalance.innerHTML = dafcoin;
     });
   
   } else {
+    //If the user is logged out it will not access the database for this information and no information will display
     // clear account info if user is logged out 
     profileEmail.innerHTML = '';
     profileID.innerHTML = '';
@@ -142,32 +157,32 @@ window.onclick = function(event) {
     sendmodal.style.display = "none";
   }
 }
-//send coins works for function, balance says not a number 
+//calculates current balance minus inputted hours to output z and updates the database of the user
     function sendCoins(){
     const sendcoinsForm = document.querySelector('#sendcoins-form');
-    var y = parseInt(document.getElementById("newbalance").value);
-    var x = parseInt(document.getElementById("sendcoins-hours").value);
-    document.getElementById("hours").innerHTML = x;
     var youruid = document.getElementById("your-uid").value;
-    var test = dafbalance.value;
-    var testing = parseInt(test);
-    
-    var z = myFunction(parseInt(y), x);
-    function myFunction(a, b){
-        return a - b;
-    }
-    document.getElementById("total").innerHTML = z;
+    var sentuid = document.getElementById("sendcoins-uid").value;
+    var x = parseFloat(document.getElementById("sendcoins-hours").value);
+    document.getElementById("hours").innerHTML = x;
+    var y = parseFloat(document.getElementById('newbalance').value);
+    var z = 0.0;
+    z = parseFloat(balance - x);
+    console.log('x', x);
+    console.log('y', y);
+    console.log(DAFcoins.innerHTML)
+    console.log('z', z);
+    document.getElementById("total").innerHTML = parseFloat(z);
     
     db.collection("users").doc(youruid).update({
-    "DAFcoins": parseInt(z)
+    "DAFcoins": z
 })
 .then(function() {
     console.log("Document successfully updated!");
     window.alert("Balance updated! You have successfully sent coins to " + sentuid);
     sendcoinsForm.reset();
 });
-    var sentuid = document.getElementById("sendcoins-uid").value;
-        var w = sendFunction(1, x);
+//calculates the balance of the user being sent the coins and adds the coins to their balance 
+        var w = sendFunction(toUserCoins, x);
         function sendFunction(a, b){
             return a + b;
         }
@@ -180,4 +195,5 @@ window.onclick = function(event) {
 .then(function() {
     console.log("Coins sent to other user");
 });
+
 }

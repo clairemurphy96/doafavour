@@ -308,10 +308,10 @@ img {
   z-index: 1;
   display: inline-block;
   min-width: 180px;
-  height: 45px;
-  color: #191919;
+  height: 45px;    
+  color: #66b3ff;
   background-color: #ffffff;
-  border: 1px solid #191919;
+  border: 1px solid #66b3ff;
   border-radius: 3px;
   padding: 0 30px;
   font-size: 14px;
@@ -322,7 +322,7 @@ img {
     font-size: 14px;
     color: #ffffff;
     font-weight: 400;
-    background-color: #191919; }
+    background-color: #66b3ff; }
   .foode-btn.btn-sm {
     min-width: 80px;
     height: 30px;

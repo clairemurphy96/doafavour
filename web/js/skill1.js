@@ -1,3 +1,6 @@
+//Connecting to Firebase Realtime Database 
+//https://www.youtube.com/watch?v=m3TMPyQNAVs&list=PLGCjwl1RrtcRTbJ9WBL9exbUFNqwzz9if
+
 var tblPosts = document.getElementById('tbl_posts_list');
   var databaseRef = firebase.database().ref('bakingskills/');
   var rowIndex = 1;
@@ -31,7 +34,9 @@ var tblPosts = document.getElementById('tbl_posts_list');
    var post_email = document.getElementById('post_email').value;
    const postSkillForm = document.querySelector('#postSkill-form');
   
-   var uid = firebase.database().ref().child('bakingskills').push().key;
+    var uid = firebase.database().ref().child('bakingskills').push().key;
+   //var uid = db.collection("users").doc(user.uid);
+   //var myUserId = firebase.auth().currentUser.uid;
    
    var data = {
     user_id: uid,
@@ -90,11 +95,26 @@ var roofRef = firebase.database().ref().child("bakingskills");
         var message = snap.child("post_message").val();
         var email = snap.child("post_email").val();
         
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p>Name: " + name + "</p><p> Location: " + location + "</p><p> Message: " + message + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
-        
-        $(inputEmail).append(email); 
-    });
-    
+        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b>Name: </b> " + name + "</p><p><b> Location: </b> " + location + "</p><p><b> Message: </b> " + message + "</p><button onclick='showandhide()' class='profile__contact-btn btn btn-lg btn-block btn-info'>Show Email Address</button> <div id='emailaddress' style='display:none'><b> Email: </b> " + email + "</div><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
+        $(inputEmail).append(email);
+  });
+   // <div class='modal fade' id='myModal' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title' style='text-align:center'>Send Email</h4></div><div class='modal-body'><form id='contact-form'><div class='form-group center-block'><label for='inputEmail'>Their Email</label><div class='form-control contact-input' id='inputEmail'>" + email + "</div></div><div class='form-group center-block'><label for='inputName'>Your Name</label><input type='text' class='form-control contact-input' id='inputName' placeholder='Name' name='name'></div><div class='form-group center-block'><label for='inputMessage'>Your Reply Message</label><textarea id='inputMessage' class='form-control contact-input' rows='3' placeholder='Your Message' name='message'></textarea></div><input type='text' name='_gotcha' class='display-none'><div class='text-center'><button class='btn btn-default' type='submit' id='email-submit-btn' value='Send'>Submit</button></div><span></span></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>
+
+function copyEmailAddress() {
+  var copyText = document.getElementById("inputEmail");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+
+function showandhide() {
+  var x = document.getElementById("emailaddress");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
 //function for sending emails 
 $(document).ready(function() {

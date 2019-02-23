@@ -1,8 +1,5 @@
 /* global firebase */
-
 const auth = firebase.auth();
-const accountDetails = document.querySelector('.account-details');
-const loggedInLinks = document.querySelectorAll('.logged-in');
 
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
@@ -15,21 +12,28 @@ auth.onAuthStateChanged(user => {
   }
 });
 
+const accountDetails = document.querySelector('.account-details');
+const loggedInLinks = document.querySelectorAll('.logged-in');
+const userID = document.querySelector('.userID');
+
 const loggedin = (user) => {
   if (user) {
     // email info
-    const html = `
+    const email = `
       <div>Logged in as ${user.email}</div>
     `;
-    accountDetails.innerHTML = html;
-    // toggle user UI elements
-    loggedInLinks.forEach(item => item.style.display = 'block');
+    accountDetails.innerHTML = email;
+    
+    // uid of user logged in
+    const uid = `
+      <div>${user.uid}</div>
+    `;
+    userID.innerHTML = uid;
     
   } else {
     // clear account info
     accountDetails.innerHTML = '';
-    // toggle user elements
-    loggedInLinks.forEach(item => item.style.display = 'none');
+    userID.innerHTML = '';
     
   }
 };
