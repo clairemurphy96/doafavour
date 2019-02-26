@@ -14,9 +14,10 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     
     <!-- Firebase Code and Packages -->
  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -124,7 +125,6 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="profile.html">Profile</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a id="logout">Log Out</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -217,21 +217,22 @@
                         </div>
                     </div>
             
-             <!-- Reply and send email modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+                   <!-- The Modal -->
+  <div class="modal" id="myModal">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
       <div class="modal-content">
+      
+        <!-- Modal Header -->
         <div class="modal-header">
+          <h4 class="modal-title">Send Email</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="text-align:center">Send Email</h4>
         </div>
+        
+        <!-- Modal body -->
         <div class="modal-body">
-       <form id="contact-form">
-        <div class="form-group center-block">
+          <div class="form-group center-block">
           <label for="inputEmail">Their Email</label>
-          <div class="form-control contact-input" id="inputEmail">
+          <div class="form-control contact-input" id="inputEmail"></div>
         </div>
         <div class="form-group center-block">
           <label for="inputName">Your Name</label>
@@ -241,20 +242,19 @@
           <label for="inputMessage">Your Reply Message</label>
           <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Your Message" name="message"></textarea>
         </div>
-        <input type="hidden" name="_gotcha" class="display-none">
-        <div class="text-center">
+        <div class="form-group center-block">
           <button class="btn btn-default" type="submit" id="email-submit-btn" value="Send">
             Submit
           </button>
         </div>
-        <span></span>
-      </form>    
         </div>
+        
+        <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
+        
       </div>
-      
     </div>
   </div>
  
@@ -265,16 +265,7 @@
                 <div class="col-12">
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info d-flex align-items-center justify-content-between">
-                        <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-                        <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-                        <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
-                        <a href="#"><i class="fa fa-linkedin"></i><span>linkedin</span></a>
-                        <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
-                        <a href="#"><i class="fa fa-vimeo"></i><span>Vimeo</span></a>
-                        <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
-                    </div>
+                   
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
                 </div>

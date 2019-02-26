@@ -2,10 +2,12 @@
 
 //https://firebase.google.com/docs/database/web/lists-of-data#sorting_and_filtering_data 
 
-var selectVal = document.getElementById("countrylist");
+//Declaring variables 
+var selectList = document.getElementById("countrylist");
 const div = document.querySelector('.main-list');
 
-selectVal.onclick = function(){
+//When the dropdown of countries are selected hide all and then display only the combined by Location
+selectList.onclick = function(){
     div.innerHTML = "";
     console.log(this.value);
     var x = this.value;

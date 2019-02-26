@@ -1,27 +1,3 @@
-var tblPosts = document.getElementById('tbl_posts_list');
-  var databaseRef = firebase.database().ref('languagesskills/');
-  var rowIndex = 1;
-  
-  databaseRef.once('value', function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-   var childKey = childSnapshot.key;
-   var childData = childSnapshot.val();
-   
-   var row = tblPosts.insertRow(rowIndex);
-   var cellId = row.insertCell(0);
-   var cellName = row.insertCell(1);
-   var cellEmail = row.insertCell(2);
-   var cellMessage = row.insertCell(3);
-   var cellLocation = row.insertCell(4);
-   cellId.appendChild(document.createTextNode(childKey));
-   cellName.appendChild(document.createTextNode(childData.post_name));
-   cellEmail.appendChild(document.createTextNode(childData.post_location));
-   cellMessage.appendChild(document.createTextNode(childData.post_message));
-   cellLocation.appendChild(document.createTextNode(childData.post_email));
-   
-   rowIndex = rowIndex + 1;
-    });
-  });
    
    //function for button for saving posts to the database
   function save_post(){
@@ -30,10 +6,9 @@ var tblPosts = document.getElementById('tbl_posts_list');
    var post_name = document.getElementById('post_name').value;
    var post_email = document.getElementById('post_email').value;
    const postSkillForm = document.querySelector('#postSkill-form');
+   var currentTime = new Date();
   
    var uid = firebase.database().ref().child('languagesskills').push().key;
-   
-   var uid2 = user.uid;
    
    var data = {
     user_id: uid,
@@ -41,6 +16,7 @@ var tblPosts = document.getElementById('tbl_posts_list');
     post_location: post_location,
     post_message: post_message,
     post_email: post_email,
+    post_date: currentTime
    };
    
    var updates = {};
@@ -50,32 +26,6 @@ var tblPosts = document.getElementById('tbl_posts_list');
    alert('The post is created successfully!');
    reload_page();
    postSkillForm.reset();
-  }
-  
-  function update_user(){
-   var user_name = document.getElementById('user_name').value;
-   var user_id = document.getElementById('user_id').value;
-
-   var data = {
-    user_id: user_id,
-    user_name: user_name
-   }
-   
-   var updates = {};
-   updates['/users/' + user_id] = data;
-   firebase.database().ref().update(updates);
-   
-   alert('The user is updated successfully!');
-   
-   reload_page();
-  }
-  
-  function delete_user(){
-   var user_id = document.getElementById('user_id').value;
-  
-   firebase.database().ref().child('/users/' + user_id).remove();
-   alert('The user is deleted successfully!');
-   reload_page();
   }
   
   function reload_page(){
@@ -91,17 +41,12 @@ var roofRef = firebase.database().ref().child("languagesskills");
         var location = snap.child("post_location").val();
         var message = snap.child("post_message").val();
         var email = snap.child("post_email").val();
+        var postdate = snap.child("post_date").val();
         
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p>Name: " + name + "</p><p> Location: " + location + "</p><p> Message: " + message + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
+        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b> " + postdate + "</b></p><p><b>Name: </b> " + name + "</p><p><b> Location: </b> " + location + "</p><p><b> Message: </b> " + message + "</p><p><b> Email: </b> " + email + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
         
         $(inputEmail).append(email); 
     });
-    
-function like(){
-        var likes = 1;
-        document.getElementById("like").innerHTML=likes;
-        likes=likes+1;
-                }
 
 //function for sending email
 $(document).ready(function() {

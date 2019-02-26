@@ -105,7 +105,6 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="profile.html">Profile</a></li>
-                                    <li><a href='#' id="logout">Log Out</a></li>
                                 </ul>
 
                             </div>
@@ -140,7 +139,7 @@
           </div>
           <div class="panel-body">
             <div class="profile__avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
+               <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
             </div>
             <div class="profile__header">
                 <h5>Name: </h5><h4 class="profile-name"></h4><h5>Skill: </h5><h4 class="profile-skill"></h4>
@@ -186,62 +185,12 @@
           <h4 class="panel-title">Latest posts</h4>
           </div>
           <div class="panel-body">
-            <div class="profile__comments">
-              <div class="profile-comments__item">
-                <div class="profile-comments__controls">
-                  <a href="#"><i class="fa fa-share-square-o"></i></a>
-                  <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"><i class="fa fa-trash-o"></i></a>
-                </div>
-                <div class="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
-                </div>
-                <div class="profile-comments__body">
-                  <h5 class="profile-comments__sender">
-                    Richard Roe <small>2 hours ago</small>
-                  </h5>
-                  <div class="profile-comments__content">
-                      <div id="myposts"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="profile-comments__item">
-                <div class="profile-comments__controls">
-                  <a href="#"><i class="fa fa-share-square-o"></i></a>
-                  <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"><i class="fa fa-trash-o"></i></a>
-                </div>
-                <div class="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
-                </div>
-                <div class="profile-comments__body">
-                  <h5 class="profile-comments__sender">
-                    Richard Roe <small>5 hours ago</small>
-                  </h5>
-                  <div class="profile-comments__content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
-                  </div>
-                </div>
-              </div>
-              <div class="profile-comments__item">
-                <div class="profile-comments__controls">
-                  <a href="#"><i class="fa fa-share-square-o"></i></a>
-                  <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"><i class="fa fa-trash-o"></i></a>
-                </div>
-                <div class="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
-                </div>
-                <div class="profile-comments__body">
-                  <h5 class="profile-comments__sender">
-                    Richard Roe <small>1 day ago</small>
-                  </h5>
-                  <div class="profile-comments__content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
-                  </div>
-                </div>
-              </div>
-            </div>
+           
+               <div class="main-list" id="table_body">
+               <div class="list-item">
+                                   
+               </div>
+               </div> 
           </div>
         </div>
         
@@ -285,13 +234,15 @@
                         <label for="your-uid">Please enter your user ID</label>
                     </div><br> 
                     <div class="input-field">
-                        <input type="text" id="sendcoins-uid" list='uidlist' onfocusout="myFunction('RITShpiypyUShaaYXmb6xRbldFF2')" required />
+                        <input type="text" id="sendcoins-uid" list='uidlist' onfocusout="myFunction('input')" required />
                         <label for="sendcoins-uid">User ID of whom you will be sending the coins to (Double click to see names of users)</label>
                         <datalist id='uidlist'>
                             <option label='Claire Murphy' value='PIsTakNKA0QU2vctdIVmKL4SMvg1'>
                             <option label='Laura Bartley' value='SFkZzzp8o4fJCXTSuyZMIS8bvxi1'>
                             <option label='Tom Collins' value='RITShpiypyUShaaYXmb6xRbldFF2'>
                             <option label='Pete Matthews' value='L6qmrKrsP2NrRjwym3MuzJrUhL93'>    
+                            <option label="Olive McGrath" value='qyhfPskNutagEdb7bJycxWob46H2'>
+                            <option label="Liz O'Connor" value='jNPTv8cDUyT2liPFKizeDjM5yfS2'>
                         </datalist>
                     </div><br> 
                     <div class="input-field">
@@ -365,8 +316,16 @@
               Yes / No 
             </div>
           </div>
+            <div class="profile__contact-info-item">
+            <div class="profile__contact-info-body">
+              <select name="County" class="form-control" id="countrylist" required>
+                    <option value="Laura Bartley">Laura</option>
+                    <option value="Claire Murphy">Claire</option>
+                    <option value="Tom Collins">Tom</option>
+              </select>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
 </div>
