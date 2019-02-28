@@ -100,18 +100,18 @@ Firebase Auth & Login/SignUp https://www.youtube.com/watch?v=5VxqV8FhlVg&list=PL
           <input type="text" id="signup-skill" required list='skilllist' />
           <label for="signup-skill">Skill</label>
             <datalist id='skilllist'>
-                <option label='Baking' value='baking'>
-                <option label='Babysitting' value='babysitting'>
-                <option label='Cleaning' value='cleaning'>
-                <option label='DIY' value='diy'>
-                <option label='Driving' value='driving'>
-                <option label='Gardening' value='gardening'>
-                <option label='Handware/Software' value='hardwaresoftware'>
-                <option label='Languages' value='languages'>
-                <option label='Music' value='music'>
-                <option label='Other' value='other'>
-                <option label='Photography' value='photography'>
-                <option label='Programming' value='programming'>
+                <option label='Baking' value='Baking'>
+                <option label='Babysitting' value='Babysitting'>
+                <option label='Cleaning' value='Cleaning'>
+                <option label='DIY' value='DIY'>
+                <option label='Driving' value='Driving'>
+                <option label='Gardening' value='Gardening'>
+                <option label='Handware/Software' value='Hardware/Software'>
+                <option label='Languages' value='Languages'>
+                <option label='Music' value='Music'>
+                <option label='Other' value='Other'>
+                <option label='Photography' value='Photography'>
+                <option label='Programming' value='Programming'>
             </datalist>
         </div>
         <div class="input-field">
@@ -163,8 +163,10 @@ Firebase Auth & Login/SignUp https://www.youtube.com/watch?v=5VxqV8FhlVg&list=PL
                         <!-- Search Bar for searching skills -->
                         <div class="search-form">
                             <form action="Search" method="post">
-                                <input type="text" id="myInput" onkeyup="FindSkill()" placeholder="Search for skills.." title="Type in a skill">
-                               
+                                <div class="input-container">
+                                    <i class="fa fa-search skillicon"></i>
+                                    <input class="input-skill" type="text" id="myInput" onkeyup="FindSkill()" placeholder="Search for skills.." title="Type in a skill">                     
+                                </div>
                                 <ul id="myUL">
                                 <li><a href="Skill1.html">Baking</a></li>
                                 <li><a href="Skill7.html">Babysitting</a></li>
@@ -188,9 +190,23 @@ Firebase Auth & Login/SignUp https://www.youtube.com/watch?v=5VxqV8FhlVg&list=PL
 
     </header>
     <!-- ##### Header Area End ##### -->
-    <!-- Footer with breaklines -->
-    <footer>
-        <br><br>
+    <!-- Footer -->
+   <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                    <!-- Footer Info -->
+                    <div class="footer text">
+                        <center><h6 style="font-family:Times New Roman;"><b>DAF</b></h6></center>
+                        <center><p style="font-family:Times New Roman;">Copyright 2019 | DAF</p></center>
+                    </div>
+                    <!-- Footer Curve Line -->
+                    <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- ##### All Javascript Script ##### -->

@@ -19,7 +19,7 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
-
+    
 </head>
 
 <body>
@@ -144,8 +144,16 @@
             <div class="profile__header">
                 <h5>Name: </h5><h4 class="profile-name"></h4><h5>Skill: </h5><h4 class="profile-skill"></h4>
               
-                <h5>BIO:</h5><h4 class="profile-bio"></h4>
-            
+                <div class="row">
+                <div class="col-12 col-md-6">
+                <h5>BIO:</h5>
+                </div>
+                <div class="col-12 col-md-6">
+                <button id="updatebiobutton" class="btn foode-btn btn-sm active">Update BIO</button>
+                </div>
+                </div>
+                <h4 class="profile-bio"></h4>
+                
             </div>
           </div>
         </div>
@@ -160,7 +168,7 @@
               <tbody>
                 <tr>
                   <th><strong>User ID</strong></th>
-                  <td><div class="profile-id"></div></td>
+                  <td><div class="profile-id" onClick='myFunction(this)'></div></td>
                 </tr>
                 <tr>
                   <th><strong>Address</strong></th>
@@ -198,7 +206,7 @@
       </div>
       <div class="col-xs-12 col-sm-3">
         
-        <!-- Contact user -->
+        <!-- Modals -->
         <p>
           <button id="myBtn" class="profile__contact-btn btn btn-lg btn-block btn-info">
             View DAF Account</button>
@@ -267,11 +275,36 @@
                         </div>
                     </div>
                 </div>
-    <!-- ##### Breadcrumb Area End ##### -->
-                <h3> </h3>
               </div>
           </div>
             </div>
+         
+                 <!-- Update Bio Modal -->
+                <div id="bioModal" class="profilemodal">
+                <!-- Modal content -->
+                     <div class="profilemodal-content">
+                   <div class="profilemodal-header">
+                     <span class="bioclose">&times;</span>
+                     <h2 style="font-family:Berlin Sans FB Demi;"> Update Bio</h2>
+                   </div><br>
+                   <div class="profilemodal-body">
+                     <div class="row">
+                        <div class="col-12 col-md-2">
+                            <label for="updatebio">Enter new bio</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                           <textarea id="updatebio" class="updateBIO" cols="15" rows="3" placeholder="Update BIO.." onfocus="this.value=''" required></textarea>
+                        </div>
+                        <div class="col-12 col-md-2">
+                           <button id="updatebutton" class="btn foode-btn btn-sm active" onclick="updateBIO()">Update</button>
+                        </div>
+                        <div class="col-12 col-md-2">
+                         <label>Please refresh the page to see your new bio</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                   </div>
 
         <hr class="profile__contact-hr">
         
@@ -318,10 +351,11 @@
           </div>
             <div class="profile__contact-info-item">
             <div class="profile__contact-info-body">
-              <select name="County" class="form-control" id="countrylist" required>
+              <select name="Users" class="form-control" id="userlist">
                     <option value="Laura Bartley">Laura</option>
                     <option value="Claire Murphy">Claire</option>
                     <option value="Tom Collins">Tom</option>
+                    <option value="Liz O'Connor">Liz</option>
               </select>
             </div>
           </div>

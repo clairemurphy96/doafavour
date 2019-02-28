@@ -1,3 +1,6 @@
+<!-- Modal - https://www.w3schools.com/howto/howto_css_modals.asp 
+spreeform for sending emails - https://www.youtube.com/watch?v=tGEi95Z7duw -->
+
 <html lang="en">
 <head>
         <meta charset="UTF-8">
@@ -15,12 +18,12 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    
- <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
- <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-app.js"></script>
  <script>
   // Initialize Firebase
   var config = {
@@ -33,7 +36,11 @@
   };
   firebase.initializeApp(config);
 </script>
-<script src="js/skill2.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase-database.js"></script>
+    <script src="js/loggedin.js"></script>
+    <script src="js/skill2.js"></script>
 </head>
 <body>
      <!-- ##### Preloader ##### -->
@@ -58,11 +65,7 @@
                            
                             <!-- Logged In As -->
                             <div class="top-social-info">
-                            <ul>
-                            <li class="logged-in">
-                              <p class="account-details" style="font-family:Copperplate Gothic Light;"></p>
-                            </li>   
-                            </ul>                            
+                              <div class="account-details" id="account-details" style="font-family:Copperplate Gothic Light;"></div>      
                             </div>
                         </div>
                     </div>
@@ -116,8 +119,8 @@
                                         </ul>
                                     </li>                                                    
                                     <li><a href="about-us.html">About</a></li>
-                                    <li><a href="profile.html">Profile</a></li>
                                     <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
                                 </ul>
 
                             </div>
@@ -140,7 +143,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
                             <li class="breadcrumb-item"><a href='byskill.html'>By Skill</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Gardening</li>
+                            <li class="breadcrumb-item active">Gardening</li>
                         </ol>
                     </nav>
                 </div>
@@ -155,6 +158,7 @@
                     <div class="section-heading">
                         <h2>Gardening</h2>
                         <p><i>Live Posts</i></p>
+                        <div class="userID"></div>
                     </div>
                 </div>
     </div><br><br><br>
@@ -163,16 +167,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    
-                   <div class="contact-content-area">
                         <div class="main-list" id="table_body">
                             <div class="list-item">
                                 <h2>Live Posts:</h2>
                                 
-                           
                             </div>
-                        </div> 
-                    </div><br><br>
+                        </div><br>
                         </div> 
                     </div>
 
@@ -205,16 +205,15 @@
                                         </div>
                                     </div>
                                 </div>
-                               <button class="btn foode-btn m-2">Post</button>
                            </form>
                         </div>
 
-    
+    <input type="button" value="Post" class="btn foode-btn m-2" onclick="save_post();" />
                  
                         </div>
              </div>
             
-             <!-- The Modal -->
+              <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -229,7 +228,7 @@
         <div class="modal-body">
           <div class="form-group center-block">
           <label for="inputEmail">Their Email</label>
-          <div class="form-control contact-input" id="inputEmail"></div>
+          <input type="text" class="form-control contact-input" id="inputEmail" placeholder="Click on email address to copy it.."/>
         </div>
         <div class="form-group center-block">
           <label for="inputName">Your Name</label>
@@ -245,6 +244,7 @@
           </button>
         </div>
         </div>
+        
         
         <!-- Modal footer -->
         <div class="modal-footer">
@@ -262,7 +262,10 @@
                 <div class="col-12">
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
-                   
+                    <div class="footer text">
+                        <center><h6 style="font-family:Times New Roman;"><b>DAF</b></h6></center>
+                        <center><p style="font-family:Times New Roman;">Copyright 2019 | DAF</p></center>
+                    </div>
                     <!-- Footer Curve Line -->
                     <img class="footer-curve" src="img/core-img/foo-curve.png" alt="">
                 </div>
@@ -289,7 +292,7 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
- 
-</body>
+    
+</body> 
 </html>
 

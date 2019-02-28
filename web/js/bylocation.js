@@ -14,14 +14,28 @@ selectList.onclick = function(){
     var toReturnCombined = combined.filter(function(o){
         return o.post_location.toUpperCase() === x.toUpperCase();
     });
-    console.log(toReturnCombined)
+    console.log(toReturnCombined);
     toReturnCombined.forEach(function(o){
-        console.log(o)
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><p><b> Email: </b> " + o.post_email + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
-    })
-}
+        console.log(o);
+        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b> " + o.post_date + "</b></p><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><div class='row'><div class='col-12 col-md-1'><p><b> Email: </b></p></div><div class='col-12 col-md-3'><p onClick='myFunction(this)'>" + o.post_email + "</p></div><div class='col-12 col-md-3'><button class='btn foode-btn btn-sm active'>Click email address to copy</button></div></div><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
+    });
+};
 
-var combined = []
+    //Copy email address text to clipboard
+    function myFunction(e){
+      var c=document.getElementById('inputEmail');
+      c.value=e.textContent;
+          c.select();
+          try {
+        var successful = document.execCommand('copy')
+        var msg = successful ? 'successfully' : 'unsuccessfully'
+        alert(c.value + ' email copied!');
+          }catch(err) {
+        alert('Falied to copy.');
+          }
+    }
+
+var combined = [];
 //Skill1
 var roofRef1 = firebase.database().ref().child("bakingskills");
     
@@ -31,6 +45,7 @@ var roofRef1 = firebase.database().ref().child("bakingskills");
         var location = snap.child("post_location").val();
         var message = snap.child("post_message").val();
         var email = snap.child("post_email").val();
+        var postdate = snap.child("post_date").val();
 
     });
 
@@ -167,13 +182,12 @@ var roofRef12 = firebase.database().ref().child("otherskills");
         console.log(combined)
         combined.forEach(function(o){
         console.log(o)
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><p><b> Email: </b> " + o.post_email + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
-
+        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b> " + o.post_date + "</b></p><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><div class='row'><div class='col-12 col-md-1'><p><b> Email: </b></p></div><div class='col-12 col-md-3'><p onClick='myFunction(this)'>" + o.post_email + "</p></div><div class='col-12 col-md-3'><button class='btn foode-btn btn-sm active'>Click email address to copy</button></div></div><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
     })
 
     });
-
     
+   
 //Modal for sending email
 $(document).ready(function() {
   $('#contact-form').submit(function(e) {

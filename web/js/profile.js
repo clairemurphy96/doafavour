@@ -24,6 +24,8 @@ const dafbalance = document.getElementById("newbalance");
 var balance;
 var toUserCoins;
 var toUserInput = document.getElementById("your-uid");
+var myUID;
+var userName;
 
 //If the user is logged in it will access the database for this information and display it 
 const setupUI = (user) => {
@@ -39,6 +41,7 @@ const setupUI = (user) => {
       <div>${user.uid}</div>
     `;
     profileID.innerHTML = uid;
+    myUID = user.uid;   //reads outside a div
     
         //bio from logged in user from database
     db.collection('users').doc(user.uid).get().then(doc => {
@@ -70,6 +73,7 @@ const setupUI = (user) => {
       <div>${doc.data().name}</div>
     `;
     profileName.innerHTML = name;
+    userName = doc.data().name;
     });
     
     //skill from logged in user from database
@@ -82,7 +86,6 @@ const setupUI = (user) => {
     
     //number of daf coins from logged in user from database
     db.collection('users').doc(user.uid).get().then(doc => {
-        console.log(doc)
         balance = doc.data().DAFcoins; //reading as a number 
       var dafcoin = `
       <div>${doc.data().DAFcoins}</div>
@@ -109,14 +112,17 @@ const setupUI = (user) => {
 // Get the modal for the DAF account 
 var modal = document.getElementById('myModal');
 var sendmodal = document.getElementById('SendCoinsModal');
+var biomodal = document.getElementById('bioModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 var sendbtn = document.getElementById("sendcoins");
+var biobtn = document.getElementById("updatebiobutton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var sendspan = document.getElementsByClassName("sendclose")[0];
+var biospan = document.getElementsByClassName("bioclose")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -127,6 +133,10 @@ sendbtn.onclick = function() {
   sendmodal.style.display = "block";
 }
 
+biobtn.onclick = function() {
+  biomodal.style.display = "block";
+}
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -134,6 +144,10 @@ span.onclick = function() {
 
 sendspan.onclick = function() {
   sendmodal.style.display = "none";
+}
+
+biospan.onclick = function() {
+  biomodal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -149,6 +163,12 @@ window.onclick = function(event) {
   }
 }
 
+window.onclick = function(event) {
+    if (event.target == biomodal) {
+    biomodal.style.display = "none";
+  }
+}
+
 //function thats passed through varaible to get the value of the DAFcoins field of user were sending coins to 
 function myFunction(input){
     var toID = document.getElementById("sendcoins-uid").value;
@@ -157,6 +177,7 @@ function myFunction(input){
         toUserCoins = doc.data().DAFcoins;
     });
 }
+
 //calculates current balance minus inputted hours to output z and updates the database of the user
     function sendCoins(){
     const sendcoinsForm = document.querySelector('#sendcoins-form');
@@ -193,9 +214,41 @@ function myFunction(input){
 
 }
 
+//Updating users bio 
+function updateBIO() {
+    const updatebioForm = document.querySelector('#updatebio-form');
+    var updatetextarea = document.getElementById("updatebio").value;
+    const textarea = document.querySelector('.updateBIO');
+    
+    db.collection("users").doc(myUID).update({
+        "bio": updatetextarea
+    })
+    .then(function() {
+    window.alert("Bio successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating bio: ", error);
+    });
+}
+
+//Copy UID text to clipboard
+    function myFunction(e){
+      var c=document.getElementById('your-uid');
+      c.value=e.textContent;
+          c.select();
+          try {
+        var successful = document.execCommand('copy')
+        var msg = successful ? 'successfully' : 'unsuccessfully'
+        alert(c.value + 'UID copied!');
+          }catch(err) {
+        alert('Falied to copy.');
+          }
+    }
+
 //Latest posts
 //Declaring variables 
-var selectList = document.getElementById("countrylist");
+var selectList = document.getElementById("userlist");
 const div = document.querySelector('.main-list');
 
 //When the dropdown of countries are selected hide all and then display only the combined by Location
@@ -211,15 +264,26 @@ selectList.onclick = function(){
         console.log(o)
         $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
                 
-      })
-}
+      });
+};
 
 var combined = []
 //Skill1
 var roofRef1 = firebase.database().ref().child("bakingskills");
     
     roofRef1.on("child_added", snap => {
-        combined.push(snap.val());
+        
+//        var snapVal = Object.keys(snap.val()).map(function(k){
+//            return snap.val()[k]
+//        }).filter(function(o){
+//            return o.post_name.UpperCase() === userName.toUpperCase()
+//        })
+        
+       // if(snapVal.post_name.UpperCase() === userName.toUpperCase()){
+         //   combined.push(snap.val())
+        //}//
+//        combined.push(snapVal);
+        //console.log(snap.val())
         var name = snap.child("post_name").val();
         var location = snap.child("post_location").val();
         var message = snap.child("post_message").val();
@@ -360,9 +424,7 @@ var roofRef12 = firebase.database().ref().child("otherskills");
         console.log(combined)
         combined.forEach(function(o){
         console.log(o)
-        $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><p><b> Email: </b> " + o.post_email + "</p><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
-
+        $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
     })
 
     });
-

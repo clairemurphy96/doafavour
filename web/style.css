@@ -916,7 +916,7 @@ img {
           .footer-area .footer-social-info a span {
             display: none; } }
       .footer-area .footer-social-info a:hover, .footer-area .footer-social-info a:focus {
-        color: #e59f80; }
+        color: #FFFFFF; }
   .footer-area .copywrite-text {
     position: relative;
     z-index: 1;
@@ -924,17 +924,17 @@ img {
     text-align: center; }
     .footer-area .copywrite-text p {
       font-size: 14px;
-      color: #a6a6a6;
+      color: #FFFFFF;
       font-weight: 400; }
       @media only screen and (max-width: 767px) {
         .footer-area .copywrite-text p {
           font-size: 12px; } }
       .footer-area .copywrite-text p a {
         font-size: 14px;
-        color: #a6a6a6;
+        color: #FFFFFF;
         font-weight: 400; }
         .footer-area .copywrite-text p a:hover, .footer-area .copywrite-text p a:focus {
-          color: #e59f80; }
+          color: #FFFFFF; }
         @media only screen and (max-width: 767px) {
           .footer-area .copywrite-text p a {
             font-size: 12px; } }
@@ -2016,6 +2016,32 @@ body{
   color: white;
 }
 
+/*Search icon inside input on index.html page*/
+* {box-sizing: border-box;}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.skillicon {
+  padding: 10px;
+  background: white;
+  color: #66b3ff;
+  min-width: 50px;
+  text-align: center;
+}
+.input-skill {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-skill:focus {
+  border: 2px solid dodgerblue;
+}
 
 
 /* ======= The End ======= */
