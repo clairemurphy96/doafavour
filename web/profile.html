@@ -142,17 +142,48 @@
                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
             </div>
             <div class="profile__header">
-                <h5>Name: </h5><h4 class="profile-name"></h4><h5>Skill: </h5><h4 class="profile-skill"></h4>
-              
                 <div class="row">
-                <div class="col-12 col-md-6">
-                <h5>BIO:</h5>
+                    <div class="col-12 col-md-1">
+                    <h5>Name: </h5>
+                    </div>
+                    <div class="col-12 col-md-6">    
+                    <h4 class="profile-name"></h4>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6">
-                <button id="updatebiobutton" class="btn foode-btn btn-sm active">Update BIO</button>
+            <br>
+                <div class="row">
+                    <div class="col-12 col-md-1">
+                    <h5>Skill: </h5>
+                    </div> 
+                    <div class="col-12 col-md-5">
+                    <h4 class="profile-skill"></h4>
+                    </div>
+                    <div class="col-12 col-md-6">
+                    <button id="updateskillbutton" class="btn foode-btn btn-sm active">Change Skill</button>
+                    </div>
                 </div>
+            <br>
+                <div class="row" id="secondskill">
+                    <div class="col-12 col-md-1">
+                    <h5>Second Skill: </h5>
+                    </div> 
+                    <div class="col-12 col-md-5">
+                    <h4 class="profile-skill2"></h4>
+                    </div>
                 </div>
-                <h4 class="profile-bio"></h4>
+            <br>
+                <div class="row">
+                    <div class="col-12 col-md-1">
+                    <h5>BIO:</h5>
+                    </div>
+                    <div class="col-12 col-md-5">
+                    <h4 class="profile-bio"></h4>
+                    </div>
+                    <div class="col-12 col-md-6">
+                    <button id="updatebiobutton" class="btn foode-btn btn-sm active">Update BIO</button>
+                    </div>
+                </div>
+            <br> 
                 
             </div>
           </div>
@@ -305,6 +336,70 @@
                    </div>
                  </div>
                    </div>
+                 
+                <!-- Change Skill Modal -->
+                <div id="skillModal" class="profilemodal">
+                <!-- Modal content -->
+                     <div class="profilemodal-content">
+                   <div class="profilemodal-header">
+                     <span class="skillclose">&times;</span>
+                     <h2 style="font-family:Berlin Sans FB Demi;"> Change Skill</h2>
+                   </div><br>
+                   <div class="profilemodal-body">
+                     <div class="row">
+                        <div class="col-12 col-md-2">
+                            <label>Select your new skill</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <select name="skills" class="form-control" id="skilllist">
+                                <option value='Baking'>Baking</option>
+                                <option value='Babysitting'>Babysitting</option>
+                                <option value='Cleaning'>Cleaning</option>
+                                <option value='DIY'>DIY</option>
+                                <option value='Driving'>Driving</option>
+                                <option value='Gardening'>Gardening</option>
+                                <option value='Hardware/Software'>Hardware/Software</option>
+                                <option value='Languages'>Languages</option>
+                                <option value='Music'>Music</option>
+                                <option value='Photography'>Photography</option>
+                                <option value='Programming'>Programming</option>
+                                <option value='Other'>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-2">
+                           <button id="updateskillbutton" class="btn foode-btn btn-sm active" onclick="updateSKILL()">Update</button>
+                        </div>
+                        <div class="col-12 col-md-2">
+                         <label>Please refresh the page to see your new skill</label>
+                        </div>
+                     </div><br>
+                     <div class="row">
+                         <div class="col-12 col-md-2">
+                             <label>OR add an additional skill? </label>
+                         </div>
+                         <div class="col-12 col-md-3">
+                             <select name="secondskill" class="form-control" id="secondskilllist">
+                                <option value='Baking'>Baking</option>
+                                <option value='Babysitting'>Babysitting</option>
+                                <option value='Cleaning'>Cleaning</option>
+                                <option value='DIY'>DIY</option>
+                                <option value='Driving'>Driving</option>
+                                <option value='Gardening'>Gardening</option>
+                                <option value='Hardware/Software'>Hardware/Software</option>
+                                <option value='Languages'>Languages</option>
+                                <option value='Music'>Music</option>
+                                <option value='Photography'>Photography</option>
+                                <option value='Programming'>Programming</option>
+                                <option value='Other'>Other</option>
+                            </select>
+                         </div>
+                         <div class="col-12 col-md-2">
+                           <button id="addsecondskillbutton" class="btn foode-btn btn-sm active" onclick="addsecondSKILL()">Add</button>
+                        </div>
+                     </div>     
+                   </div>
+                 </div>
+                   </div>
 
         <hr class="profile__contact-hr">
         
@@ -351,12 +446,7 @@
           </div>
             <div class="profile__contact-info-item">
             <div class="profile__contact-info-body">
-              <select name="Users" class="form-control" id="userlist">
-                    <option value="Laura Bartley">Laura</option>
-                    <option value="Claire Murphy">Claire</option>
-                    <option value="Tom Collins">Tom</option>
-                    <option value="Liz O'Connor">Liz</option>
-              </select>
+              
             </div>
           </div>
         </div>

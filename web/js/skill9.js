@@ -19,17 +19,62 @@
     post_date: currentTime
    };
    
-   var updates = {};
-   updates['/photographyskills/' + uid] = data;
+   if (post_name === ""){
+       window.alert("Please fill out the name field");
+   } else if(post_location === "") {
+       window.alert("Please fill out the location field");
+   } else if (post_email === ""){
+       window.alert("Please fill out the email field");
+   } else if (post_message === "") {
+       window.alert("Please fill out the message field");
+   } else {
+       var updates = {};
+   updates['/cleaningskills/' + uid] = data;
    firebase.database().ref().update(updates);
    
    alert('The post is created successfully!');
    reload_page();
    postSkillForm.reset();
+   }
   }
   
   function reload_page(){
    window.location.reload();
+  }
+  
+  //send email to address given using external port and ajax request
+  function sendEmail() {
+    var toEmail = document.getElementById("inputEmail").value;
+    var subject = document.getElementById("inputsubject").value;
+    var text = document.getElementById("inputMessage").value;
+    console.log(toEmail, subject, text, "email");
+      
+    if (toEmail === ""){
+        window.alert("Please fill out the toEmail field");
+    } else if (subject === ""){
+        window.alert("Please fill out the subject field");
+    } else if ( text === ""){
+        window.alert("Please fill out the message field");
+    } else {
+        console.log(toEmail, subject, text, "email");
+      
+      var data = {
+            "toEmail": toEmail,
+            "subject": subject,
+            "text": text
+      };
+      console.log('just data', data);
+      console.log('strigified', JSON.stringify(data));
+       $.ajax({
+        url: 'http://localhost:4000/api/v1/sendemail',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json'
+        
+      });
+      window.alert("Email Sent!");    
+    }
   }
   
     //Writing posts back from the database using innerHTML

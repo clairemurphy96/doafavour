@@ -31,7 +31,8 @@ signupForm.addEventListener('submit', (e) => {
       country: signupForm['signup-country'].value,
       skill: signupForm['signup-skill'].value,
       bio: signupForm['signup-bio'].value,
-      DAFcoins: 0
+      DAFcoins: 0,
+      skill2: " "
     });
   }).then(() => {
     // close the signup modal & reset form

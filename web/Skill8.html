@@ -224,19 +224,19 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="form-group center-block">
-          <label for="inputEmail">Their Email</label>
+          <label for="inputEmail">To:</label>
           <input type="text" class="form-control contact-input" id="inputEmail" placeholder="Click on email address to copy it.."/>
         </div>
         <div class="form-group center-block">
-          <label for="inputName">Your Name</label>
-          <input type="text" class="form-control contact-input" id="inputName" placeholder="Name" name="name">
+            <label for="inputsubject">Subject: <i>Please leave name and contact email</i></label>
+          <input type="text" class="form-control contact-input" id="inputsubject" placeholder="Subject" name="subject" onfocus="this.value=''">
         </div>
         <div class="form-group center-block">
-          <label for="inputMessage">Your Reply Message</label>
-          <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Your Message" name="message"></textarea>
+          <label for="inputMessage">Body:</label>
+          <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Your Message" name="message" onfocus="this.value=''"></textarea>
         </div>
         <div class="form-group center-block">
-          <button class="btn btn-default" type="submit" id="email-submit-btn" value="Send">
+          <button class="btn btn-default" type="submit" onclick="sendEmail()" id="email-submit-btn" value="Send">
             Submit
           </button>
         </div>

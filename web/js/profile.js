@@ -19,6 +19,7 @@ const profileAddress = document.querySelector('.profile-address');
 const profileCountry = document.querySelector('.profile-country');
 const profileName = document.querySelector('.profile-name');
 const profileSkill = document.querySelector('.profile-skill');
+const profileSkill2 = document.querySelector('.profile-skill2');
 const DAFcoins = document.querySelector('.dafcoins');
 const dafbalance = document.getElementById("newbalance");
 var balance;
@@ -26,6 +27,7 @@ var toUserCoins;
 var toUserInput = document.getElementById("your-uid");
 var myUID;
 var userName;
+var userskill2;
 
 //If the user is logged in it will access the database for this information and display it 
 const setupUI = (user) => {
@@ -42,7 +44,6 @@ const setupUI = (user) => {
     `;
     profileID.innerHTML = uid;
     myUID = user.uid;   //reads outside a div
-    
         //bio from logged in user from database
     db.collection('users').doc(user.uid).get().then(doc => {
       const bio = `
@@ -84,6 +85,15 @@ const setupUI = (user) => {
     profileSkill.innerHTML = skill;
     });
     
+    //second skill from logged in user from database
+    db.collection('users').doc(user.uid).get().then(doc => {
+      const skill2 = `
+      <div>${doc.data().skill2}</div>
+    `;
+    profileSkill2.innerHTML = skill2;
+    userskill2 = doc.data().skill2;
+    });
+    
     //number of daf coins from logged in user from database
     db.collection('users').doc(user.uid).get().then(doc => {
         balance = doc.data().DAFcoins; //reading as a number 
@@ -113,16 +123,19 @@ const setupUI = (user) => {
 var modal = document.getElementById('myModal');
 var sendmodal = document.getElementById('SendCoinsModal');
 var biomodal = document.getElementById('bioModal');
+var skillmodal = document.getElementById('skillModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 var sendbtn = document.getElementById("sendcoins");
 var biobtn = document.getElementById("updatebiobutton");
+var skillbtn = document.getElementById("updateskillbutton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var sendspan = document.getElementsByClassName("sendclose")[0];
 var biospan = document.getElementsByClassName("bioclose")[0];
+var skillspan = document.getElementsByClassName("skillclose")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -137,6 +150,10 @@ biobtn.onclick = function() {
   biomodal.style.display = "block";
 }
 
+skillbtn.onclick = function() {
+  skillmodal.style.display = "block";
+}
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -148,6 +165,10 @@ sendspan.onclick = function() {
 
 biospan.onclick = function() {
   biomodal.style.display = "none";
+}
+
+skillspan.onclick = function() {
+  skillmodal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -169,6 +190,12 @@ window.onclick = function(event) {
   }
 }
 
+window.onclick = function(event) {
+    if (event.target == skillmodal) {
+    skillmodal.style.display = "none";
+  }
+}
+
 //function thats passed through varaible to get the value of the DAFcoins field of user were sending coins to 
 function myFunction(input){
     var toID = document.getElementById("sendcoins-uid").value;
@@ -185,19 +212,25 @@ function myFunction(input){
     var sentuid = document.getElementById("sendcoins-uid").value;
     var hours = parseFloat(document.getElementById("sendcoins-hours").value);
     document.getElementById("hours").innerHTML = hours;
-    var calAnswer = 0.0;
-    calAnswer = parseFloat(balance - hours);
-    document.getElementById("total").innerHTML = parseFloat(calAnswer);
     
-    db.collection("users").doc(youruid).update({
-    "DAFcoins": calAnswer
-})
-.then(function() {
-    console.log("Document successfully updated!");
-    window.alert("Balance updated! You have successfully sent coins to " + sentuid);
-    sendcoinsForm.reset();
-});
-//calculates the balance of the user being sent the coins and adds the coins to their balance 
+    //If DAF Balance is 0 alert user that they have no coins to send 
+    if (balance < 1){
+        window.alert("Unfortunately, you have no DAF coins to send. Earn coins by completing post requests");
+    } else {
+         var calAnswer = 0.0;
+        calAnswer = parseFloat(balance - hours);
+        document.getElementById("total").innerHTML = parseFloat(calAnswer);
+        
+            db.collection("users").doc(youruid).update({
+        "DAFcoins": calAnswer
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+        window.alert("Balance updated! You have successfully sent coins to " + sentuid);
+        sendcoinsForm.reset();
+    });
+    
+    //calculates the balance of the user being sent the coins and adds the coins to their balance 
         var toUserTotal = sendFunction(toUserCoins, hours);
         function sendFunction(a, b){
             return a + b;
@@ -207,10 +240,11 @@ function myFunction(input){
         
     db.collection("users").doc(sentuid).update({
     "DAFcoins": toUserTotal
-})
-.then(function() {
-    console.log("Coins sent to other user");
-});
+    })
+    .then(function() {
+        console.log("Coins sent to other user");
+    });
+    }
 
 }
 
@@ -232,6 +266,40 @@ function updateBIO() {
     });
 }
 
+//Updating skill
+function updateSKILL() {
+    var updateskill = document.getElementById("skilllist").value;
+    
+    db.collection("users").doc(myUID).update({
+        "skill": updateskill
+    })
+    .then(function() {
+    window.alert("Skill successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating skill: ", error);
+    });
+    
+}
+
+//Adding a second skill
+function addsecondSKILL() {
+    var addsecondskill = document.getElementById("secondskilllist").value;
+    
+    db.collection("users").doc(myUID).update({
+        "skill2": addsecondskill
+    })
+    .then(function() {
+    window.alert("Skill successfully added! Congratulations you now have a second skill");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error adding skill: ", error);
+    });
+    
+}
+
 //Copy UID text to clipboard
     function myFunction(e){
       var c=document.getElementById('your-uid');
@@ -246,185 +314,103 @@ function updateBIO() {
           }
     }
 
-//Latest posts
-//Declaring variables 
-var selectList = document.getElementById("userlist");
-const div = document.querySelector('.main-list');
+//Display latest posts of logged in user using an 2 different arrays and concatating them
+var allSnaps = []
 
-//When the dropdown of countries are selected hide all and then display only the combined by Location
-selectList.onclick = function(){
-    div.innerHTML = "";
-    console.log(this.value);
-    var x = this.value;
-    var toReturnCombined = combined.filter(function(o){
-        return o.post_name.toUpperCase() === x.toUpperCase();
-    });
-    console.log(toReturnCombined)
-    toReturnCombined.forEach(function(o){
+    firebase.database().ref().child("bakingskills").once("value", bakingSnap => {
+    firebase.database().ref().child("gardeningskills").once("value", gardeningSnap => {
+    firebase.database().ref().child("diyskills").once("value", diySnap => {
+    firebase.database().ref().child("hardwaresoftwareskills").once("value", hardsoftwareSnap => {
+    firebase.database().ref().child("musicskills").once("value", musicSnap => {
+    firebase.database().ref().child("drivingskills").once("value", drivingSnap => {
+    firebase.database().ref().child("babysittingskills").once("value", babysittingSnap => {
+    firebase.database().ref().child("cleaningskills").once("value", cleaningSnap => {
+    firebase.database().ref().child("photographyskills").once("value", photographySnap => {
+    firebase.database().ref().child("programmingskills").once("value", programmingSnap => {
+    firebase.database().ref().child("languagesskills").once("value", languageSnap => {
+    firebase.database().ref().child("otherskills").once("value", otherSnap => {
+    
+        bakingSnap = bakingSnap.val();
+        gardeningSnap = gardeningSnap.val();
+        diySnap = diySnap.val();
+        hardsoftwareSnap = hardsoftwareSnap.val();
+        musicSnap = musicSnap.val();
+        drivingSnap = drivingSnap.val();
+        babysittingSnap = babysittingSnap.val();
+        cleaningSnap = cleaningSnap.val();
+        photographySnap = photographySnap.val();
+        programmingSnap = programmingSnap.val();
+        languageSnap = languageSnap.val();
+        otherSnap = otherSnap.val();
+        
+            var bakingArray = Object.keys(bakingSnap).map(k =>{                     //Skill 1 
+                bakingSnap[k]._key = k;
+                return bakingSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var gardeningArray = Object.keys(gardeningSnap).map(k => {              //Skill 2
+                gardeningSnap[k]._key = k;
+                return gardeningSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var diyArray = Object.keys(diySnap).map(k => {                          //Skill 3 
+                diySnap[k]._key = k;
+                return diySnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var hardsoftwareArray = Object.keys(hardsoftwareSnap).map(k => {        //Skill 4
+                hardsoftwareSnap[k]._key = k;
+                return hardsoftwareSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var musicArray = Object.keys(musicSnap).map(k => {                      //Skill 5
+                musicSnap[k]._key = k;
+                return musicSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var drivingArray = Object.keys(drivingSnap).map(k => {                  //Skill 6
+                drivingSnap[k]._key = k;
+                return drivingSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var babysittingArray = Object.keys(babysittingSnap).map(k => {          //Skill 7
+                babysittingSnap[k]._key = k;
+                return babysittingSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var cleaningArray = Object.keys(cleaningSnap).map(k => {                //Skill 8
+                cleaningSnap[k]._key = k;
+                return cleaningSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var photographyArray = Object.keys(photographySnap).map(k => {          //Skill 9
+                photographySnap[k]._key = k;
+                return photographySnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var programmingArray = Object.keys(programmingSnap).map(k => {           //Skill 10
+                programmingSnap[k]._key = k;
+                return programmingSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var languageArray = Object.keys(languageSnap).map(k => {                //Skill 11
+                languageSnap[k]._key = k;
+                return languageSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            var otherArray = Object.keys(otherSnap).map(k => {                      //Skill 12
+                otherSnap[k]._key = k;
+                return otherSnap[k];
+            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+        
+        //combined all the separate arrays into 1 combined and concat because otherwise it would arrays inside arrays which wouldn't work
+        var combined = [bakingArray, gardeningArray, diyArray, hardsoftwareArray, musicArray, drivingArray, babysittingArray, cleaningArray, photographyArray, programmingArray, languageArray, otherArray];
+        allSnaps = Array.prototype.concat.apply([], combined);
+       
+        console.log(allSnaps);
+        allSnaps.forEach(function(o){
         console.log(o)
         $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
-                
-      });
-};
-
-var combined = []
-//Skill1
-var roofRef1 = firebase.database().ref().child("bakingskills");
     
-    roofRef1.on("child_added", snap => {
-        
-//        var snapVal = Object.keys(snap.val()).map(function(k){
-//            return snap.val()[k]
-//        }).filter(function(o){
-//            return o.post_name.UpperCase() === userName.toUpperCase()
-//        })
-        
-       // if(snapVal.post_name.UpperCase() === userName.toUpperCase()){
-         //   combined.push(snap.val())
-        //}//
-//        combined.push(snapVal);
-        //console.log(snap.val())
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-
-//Skill2
-var roofRef2 = firebase.database().ref().child("gardeningskills");
-    
-    roofRef2.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-
-//Skill3
-var roofRef3 = firebase.database().ref().child("diyskills");
-    
-    roofRef3.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-
-//Skill4
-var roofRef4 = firebase.database().ref().child("hardwaresoftwareskills");
-    
-    roofRef4.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
- 
-    });
-    
-//Skill5
-var roofRef5 = firebase.database().ref().child("musicskills");
-    
-    roofRef5.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-    
-//Skill6
-var roofRef6 = firebase.database().ref().child("drivingskills");
-    
-    roofRef6.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-    
-//Skill7
-var roofRef7 = firebase.database().ref().child("babysittingskills");
-    
-    roofRef7.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-
-//Skill8
-var roofRef8 = firebase.database().ref().child("cleaningskills");
-    
-    roofRef8.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-    
-//Skill9
-var roofRef9 = firebase.database().ref().child("photographyskills");
-    
-    roofRef9.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-  
-    });
-    
-//Skill10
-var roofRef10 = firebase.database().ref().child("programmingskills");
-    
-    roofRef10.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-    
-//Skill11
-var roofRef11 = firebase.database().ref().child("languagesskills");
-    
-    roofRef11.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-
-    });
-    
-//Skill12
-var roofRef12 = firebase.database().ref().child("otherskills");
-    
-    roofRef12.on("child_added", snap => {
-        combined.push(snap.val());
-        var name = snap.child("post_name").val();
-        var location = snap.child("post_location").val();
-        var message = snap.child("post_message").val();
-        var email = snap.child("post_email").val();
-        
-        console.log(combined)
-        combined.forEach(function(o){
-        console.log(o)
-        $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
-    })
-
-    });
+    }); 
+     }); 
+      }); 
+       });
+        });
+         });
+          });
+           });
+            });
+             });
+              });
+               });
+                });
