@@ -1,5 +1,6 @@
 /* global db */
-const loggedOutLinks = document.querySelectorAll('.logged-out');
+
+const loggedOutLinks = document.querySelectorAll('.logged-out');    //declaring constants
 const loggedInLinks = document.querySelectorAll('.logged-in');
 const accountDetails = document.querySelector('.account-details');
 

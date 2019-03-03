@@ -1,6 +1,6 @@
 /* global auth, firebase */
 
-const auth = firebase.auth();
+const auth = firebase.auth();       //declaring firebase constants 
 const db = firebase.firestore();
 
 // listen for auth status changes
@@ -79,6 +79,7 @@ loginForm.addEventListener('submit', (e) => {
     loginForm.reset();
   })
   .catch(function(error) {
+    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode === 'auth/wrong-password') {

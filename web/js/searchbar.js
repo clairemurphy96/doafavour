@@ -1,3 +1,5 @@
+//https://www.w3schools.com/howto/howto_js_filter_lists.asp
+
 //Search for skills pages in index.html
 function FindSkill() {
     var input, filter, ul, li, a, i, txtValue;

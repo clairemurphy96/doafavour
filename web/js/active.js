@@ -1,4 +1,4 @@
-//Javascript page with bootstrap
+//Javascript page provided with bootstrap
 (function ($) {
     'use strict';
 

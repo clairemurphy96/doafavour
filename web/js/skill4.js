@@ -1,5 +1,7 @@
+//Connecting to Firebase Realtime Database 
+//https://www.youtube.com/watch?v=m3TMPyQNAVs&list=PLGCjwl1RrtcRTbJ9WBL9exbUFNqwzz9if
    
-   //function for button for saving posts to the database
+   //Saving posts to the database
   function save_post(){
    var post_message = document.getElementById('post_message').value;
    var post_location = document.getElementById('post_location').value; 
@@ -19,6 +21,7 @@
     post_date: currentTime
    };
    
+   // Handle Errors here.
    if (post_name === ""){
        window.alert("Please fill out the name field");
    } else if(post_location === "") {
@@ -98,36 +101,10 @@ var roofRef = firebase.database().ref().child("hardwaresoftwareskills");
       c.value=e.textContent;
           c.select();
           try {
-        var successful = document.execCommand('copy')
-        var msg = successful ? 'successfully' : 'unsuccessfully'
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successfully' : 'unsuccessfully';
         alert(c.value + ' email copied!');
           }catch(err) {
         alert('Falied to copy.');
           }
     }
-    
-
-//function for sending emails 
-$(document).ready(function() {
-  $('#contact-form').submit(function(e) {
-    var name    = document.getElementById('inputName');
-    var email   = document.getElementById('inputEmail');
-    var message = document.getElementById('inputMessage');
-
-    if (!name.value || !email.value || !message.value) {
-      alertify.error("Please check your entries");
-      return false;
-    } else {
-      $.ajax({
-        method: 'POST',
-        url: '//formspree.io/claireemxx@hotmail.com',
-        data: $('#contact-form').serialize(),
-        datatype: 'json'
-      });
-      e.preventDefault();
-      $(this).get(0).reset();
-      alertify.success("Message sent");
-    }
-  });
-});
-

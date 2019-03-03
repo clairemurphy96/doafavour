@@ -11,7 +11,7 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-//All constants in profile.html page
+//Declaing constants & variables 
 const profileEmail = document.querySelector('.profile-email');
 const profileID = document.querySelector('.profile-id');
 const profileBio = document.querySelector('.profile-bio');
@@ -44,7 +44,8 @@ const setupUI = (user) => {
     `;
     profileID.innerHTML = uid;
     myUID = user.uid;   //reads outside a div
-        //bio from logged in user from database
+    
+    // bio from logged in user from database 
     db.collection('users').doc(user.uid).get().then(doc => {
       const bio = `
       <div>${doc.data().bio}</div>
@@ -119,7 +120,8 @@ const setupUI = (user) => {
   }
 };
 
-// Get the modal for the DAF account 
+            //Modal 
+// Get the modal for each of the 4 modals
 var modal = document.getElementById('myModal');
 var sendmodal = document.getElementById('SendCoinsModal');
 var biomodal = document.getElementById('bioModal');
@@ -140,63 +142,54 @@ var skillspan = document.getElementsByClassName("skillclose")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
-}
-
+};
 sendbtn.onclick = function() {
   sendmodal.style.display = "block";
-}
-
+};
 biobtn.onclick = function() {
   biomodal.style.display = "block";
-}
-
+};
 skillbtn.onclick = function() {
   skillmodal.style.display = "block";
-}
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-}
-
+};
 sendspan.onclick = function() {
   sendmodal.style.display = "none";
-}
-
+};
 biospan.onclick = function() {
   biomodal.style.display = "none";
-}
-
+};
 skillspan.onclick = function() {
   skillmodal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     modal.style.display = "none";
   }
-}
-
+};
 window.onclick = function(event) {
-    if (event.target == sendmodal) {
+    if (event.target === sendmodal) {
     sendmodal.style.display = "none";
   }
-}
-
+};
 window.onclick = function(event) {
-    if (event.target == biomodal) {
+    if (event.target === biomodal) {
     biomodal.style.display = "none";
   }
-}
-
+};
 window.onclick = function(event) {
-    if (event.target == skillmodal) {
+    if (event.target === skillmodal) {
     skillmodal.style.display = "none";
   }
-}
+};
 
-//function thats passed through varaible to get the value of the DAFcoins field of user were sending coins to 
+//Gets DAFcoin balance of other user
 function myFunction(input){
     var toID = document.getElementById("sendcoins-uid").value;
         db.collection('users').doc(toID).get().then(doc => {
@@ -222,7 +215,7 @@ function myFunction(input){
         document.getElementById("total").innerHTML = parseFloat(calAnswer);
         
             db.collection("users").doc(youruid).update({
-        "DAFcoins": calAnswer
+        "DAFcoins": calAnswer       //new balance
     })
     .then(function() {
         console.log("Document successfully updated!");
@@ -233,7 +226,7 @@ function myFunction(input){
     //calculates the balance of the user being sent the coins and adds the coins to their balance 
         var toUserTotal = sendFunction(toUserCoins, hours);
         function sendFunction(a, b){
-            return a + b;
+            return a + b;   //new balance of other user
         }
         
     document.getElementById("sentcoinsbal").innerHTML = toUserTotal;
@@ -261,7 +254,7 @@ function updateBIO() {
     window.alert("Bio successfully updated!");
     })
     .catch(function(error) {
-        // The document probably doesn't exist.
+        // Handle Errors here.
         console.error("Error updating bio: ", error);
     });
 }
@@ -277,7 +270,7 @@ function updateSKILL() {
     window.alert("Skill successfully updated!");
     })
     .catch(function(error) {
-        // The document probably doesn't exist.
+        // Handle Errors here.
         console.error("Error updating skill: ", error);
     });
     
@@ -294,28 +287,30 @@ function addsecondSKILL() {
     window.alert("Skill successfully added! Congratulations you now have a second skill");
     })
     .catch(function(error) {
-        // The document probably doesn't exist.
+        // Handle Errors here.
         console.error("Error adding skill: ", error);
     });
     
 }
 
 //Copy UID text to clipboard
-    function myFunction(e){
-      var c=document.getElementById('your-uid');
-      c.value=e.textContent;
-          c.select();
-          try {
-        var successful = document.execCommand('copy')
-        var msg = successful ? 'successfully' : 'unsuccessfully'
+function myFunction(e){
+    var c=document.getElementById('your-uid');
+    c.value=e.textContent;
+    c.select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successfully' : 'unsuccessfully';
         alert(c.value + 'UID copied!');
           }catch(err) {
         alert('Falied to copy.');
-          }
-    }
+        }
+}
 
 //Display latest posts of logged in user using an 2 different arrays and concatating them
-var allSnaps = []
+
+//array
+var allSnaps = [];
 
     firebase.database().ref().child("bakingskills").once("value", bakingSnap => {
     firebase.database().ref().child("gardeningskills").once("value", gardeningSnap => {
@@ -330,7 +325,7 @@ var allSnaps = []
     firebase.database().ref().child("languagesskills").once("value", languageSnap => {
     firebase.database().ref().child("otherskills").once("value", otherSnap => {
     
-        bakingSnap = bakingSnap.val();
+        bakingSnap = bakingSnap.val();          //get value
         gardeningSnap = gardeningSnap.val();
         diySnap = diySnap.val();
         hardsoftwareSnap = hardsoftwareSnap.val();
@@ -397,8 +392,9 @@ var allSnaps = []
         allSnaps = Array.prototype.concat.apply([], combined);
        
         console.log(allSnaps);
+        //displaying array in 'table_body' class
         allSnaps.forEach(function(o){
-        console.log(o)
+        console.log(o);
         $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
     
     }); 

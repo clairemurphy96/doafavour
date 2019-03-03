@@ -1,5 +1,9 @@
 /* global firebase */
-const auth = firebase.auth();
+
+const auth = firebase.auth();                                           //declaring constants 
+const accountDetails = document.querySelector('.account-details');
+const loggedInLinks = document.querySelectorAll('.logged-in');
+const userID = document.querySelector('.userID');
 
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
@@ -12,9 +16,6 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-const accountDetails = document.querySelector('.account-details');
-const loggedInLinks = document.querySelectorAll('.logged-in');
-const userID = document.querySelector('.userID');
 
 const loggedin = (user) => {
   if (user) {
@@ -37,6 +38,7 @@ const loggedin = (user) => {
     
   }
 };
+
 // logout
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
