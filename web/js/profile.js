@@ -15,6 +15,7 @@ auth.onAuthStateChanged(user => {
 const profileEmail = document.querySelector('.profile-email');
 const profileID = document.querySelector('.profile-id');
 const profileBio = document.querySelector('.profile-bio');
+const profileDOB = document.querySelector('.profile-dob');
 const profileAddress = document.querySelector('.profile-address');
 const profileCountry = document.querySelector('.profile-country');
 const profileName = document.querySelector('.profile-name');
@@ -28,6 +29,7 @@ var toUserInput = document.getElementById("your-uid");
 var myUID;
 var userName;
 var userskill2;
+var userEmail;
 
 //If the user is logged in it will access the database for this information and display it 
 const setupUI = (user) => {
@@ -37,6 +39,7 @@ const setupUI = (user) => {
       <div>${user.email}</div>
     `;
     profileEmail.innerHTML = email;
+    userEmail = user.email;
     
     // uid of user logged in
     const uid = `
@@ -51,6 +54,14 @@ const setupUI = (user) => {
       <div>${doc.data().bio}</div>
     `;
     profileBio.innerHTML = bio;
+    });
+    
+    // DOB from logged in user from database 
+    db.collection('users').doc(user.uid).get().then(doc => {
+      const dob = `
+      <div>${doc.data().DOB}</div>
+    `;
+    profileDOB.innerHTML = dob;
     });
     
     //address from logged in user from database
@@ -211,10 +222,11 @@ function myFunction(input){
         window.alert("Unfortunately, you have no DAF coins to send. Earn coins by completing post requests");
     } else {
          var calAnswer = 0.0;
-        calAnswer = parseFloat(balance - hours);
-        document.getElementById("total").innerHTML = parseFloat(calAnswer);
-        
-            db.collection("users").doc(youruid).update({
+        calAnswer = balance - hours;
+        document.getElementById("total").innerHTML = calAnswer;
+    }
+    
+        db.collection("users").doc(youruid).update({
         "DAFcoins": calAnswer       //new balance
     })
     .then(function() {
@@ -236,9 +248,8 @@ function myFunction(input){
     })
     .then(function() {
         console.log("Coins sent to other user");
-    });
-    }
-
+//        window.alert("Balance updated! Coins successfully sent to" + sentuid);
+    });   
 }
 
 //Updating users bio 
@@ -293,20 +304,6 @@ function addsecondSKILL() {
     
 }
 
-//Copy UID text to clipboard
-function myFunction(e){
-    var c=document.getElementById('your-uid');
-    c.value=e.textContent;
-    c.select();
-    try {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'successfully' : 'unsuccessfully';
-        alert(c.value + 'UID copied!');
-          }catch(err) {
-        alert('Falied to copy.');
-        }
-}
-
 //Display latest posts of logged in user using an 2 different arrays and concatating them
 
 //array
@@ -341,59 +338,68 @@ var allSnaps = [];
             var bakingArray = Object.keys(bakingSnap).map(k =>{                     //Skill 1 
                 bakingSnap[k]._key = k;
                 return bakingSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var gardeningArray = Object.keys(gardeningSnap).map(k => {              //Skill 2
                 gardeningSnap[k]._key = k;
                 return gardeningSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var diyArray = Object.keys(diySnap).map(k => {                          //Skill 3 
                 diySnap[k]._key = k;
                 return diySnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var hardsoftwareArray = Object.keys(hardsoftwareSnap).map(k => {        //Skill 4
                 hardsoftwareSnap[k]._key = k;
                 return hardsoftwareSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var musicArray = Object.keys(musicSnap).map(k => {                      //Skill 5
                 musicSnap[k]._key = k;
                 return musicSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var drivingArray = Object.keys(drivingSnap).map(k => {                  //Skill 6
                 drivingSnap[k]._key = k;
                 return drivingSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var babysittingArray = Object.keys(babysittingSnap).map(k => {          //Skill 7
                 babysittingSnap[k]._key = k;
                 return babysittingSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var cleaningArray = Object.keys(cleaningSnap).map(k => {                //Skill 8
                 cleaningSnap[k]._key = k;
                 return cleaningSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var photographyArray = Object.keys(photographySnap).map(k => {          //Skill 9
                 photographySnap[k]._key = k;
                 return photographySnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var programmingArray = Object.keys(programmingSnap).map(k => {           //Skill 10
                 programmingSnap[k]._key = k;
                 return programmingSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var languageArray = Object.keys(languageSnap).map(k => {                //Skill 11
                 languageSnap[k]._key = k;
                 return languageSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
             var otherArray = Object.keys(otherSnap).map(k => {                      //Skill 12
                 otherSnap[k]._key = k;
                 return otherSnap[k];
-            }).filter(o => o.post_name.toUpperCase() === userName.toUpperCase());
+            }).filter(o => o.post_email.toUpperCase() === userEmail.toUpperCase());
         
         //combined all the separate arrays into 1 combined and concat because otherwise it would arrays inside arrays which wouldn't work
         var combined = [bakingArray, gardeningArray, diyArray, hardsoftwareArray, musicArray, drivingArray, babysittingArray, cleaningArray, photographyArray, programmingArray, languageArray, otherArray];
         allSnaps = Array.prototype.concat.apply([], combined);
        
+       var returnnewtoold = allSnaps.sort(function(a,b){            //returning from newest to oldest date
+           var keyA = new Date(a.post_date),
+               keyB = new Date(b.post_date);
+            // Compare the 2 dates
+            if(keyA < keyB) return 1;
+            if(keyA > keyB) return -1;
+            return 0;
+       });
+       console.log(returnnewtoold, "returnnewtoold");
         console.log(allSnaps);
         //displaying array in 'table_body' class
-        allSnaps.forEach(function(o){
+        returnnewtoold.forEach(function(o){
         console.log(o);
         $(table_body).append("<div class='panel-body'><table class='table profile__table'><tbody><tr><th><strong>" + o.post_date + "</strong></th></tr><tr><th><strong>Name</strong></th><td>" + o.post_name + "</td></tr><tr><th><strong>Location</strong></th><td>" + o.post_location + "</td></tr><tr><th><strong>Message</strong></th><td>" + o.post_message + "</td></tr><tr><th><strong>Email</strong></th><td>" + o.post_email + "</td></tr></tbody></table></div>");
     

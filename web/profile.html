@@ -199,7 +199,11 @@
               <tbody>
                 <tr>
                   <th><strong>User ID</strong></th>
-                  <td><div class="profile-id" onClick='myFunction(this)'></div></td>
+                  <td><div class="profile-id" onClick='copyID(this)'></div></td>
+                </tr>
+                <tr>
+                  <th><strong>Date of Birth</strong></th>
+                  <td><div class="profile-dob"></div></td>
                 </tr>
                 <tr>
                   <th><strong>Address</strong></th>
@@ -274,14 +278,18 @@
                     </div><br> 
                     <div class="input-field">
                         <input type="text" id="sendcoins-uid" list='uidlist' onfocusout="myFunction('input')" required />
-                        <label for="sendcoins-uid">User ID of whom you will be sending the coins to (Double click to see names of users)</label>
+                        <label for="sendcoins-uid">User ID of whom you will be sending the coins to</label>
                         <datalist id='uidlist'>
-                            <option label='Claire Murphy' value='PIsTakNKA0QU2vctdIVmKL4SMvg1'>
                             <option label='Laura Bartley' value='SFkZzzp8o4fJCXTSuyZMIS8bvxi1'>
+                            <option label='Liam Coghlan' value='Ice9TWqADFdoB6HhKgoObWiHlDw2'>
                             <option label='Tom Collins' value='RITShpiypyUShaaYXmb6xRbldFF2'>
                             <option label='Pete Matthews' value='L6qmrKrsP2NrRjwym3MuzJrUhL93'>    
                             <option label="Olive McGrath" value='qyhfPskNutagEdb7bJycxWob46H2'>
+                            <option label='Claire Murphy' value='PIsTakNKA0QU2vctdIVmKL4SMvg1'>
                             <option label="Liz O'Connor" value='jNPTv8cDUyT2liPFKizeDjM5yfS2'>
+                            <option label='Sinead O Driscoll' value='FTQuDg5lA9dx7hdnowb9genUg1A3'>
+                            <option label='Ronan O Keffee' value='epxc3F0nphaDgJGGSj8yBtsIKmK2'> 
+                            <option label='Niamh O Leary' value='Td1FQlJox7MlhN1HlWsMbusgfUp2'>
                         </datalist>
                     </div><br> 
                     <div class="input-field">
@@ -406,48 +414,10 @@
         <!-- Contact info -->
         <div class="profile__contact-info">
           <div class="profile__contact-info-item">
-            <div class="profile__contact-info-body">
+            <p>
                 <button id="sendcoins" class="profile__contact-btn btn btn-lg btn-block btn-info">
                 Send DAF coins</button>
-            </div>
-              <div class="profile__contact-info-icon">
-              <i class="fa fa-reply"></i>
-            </div>
-            <div class="profile__contact-info-body">
-                <h3 class="profile__contact-info-heading"><b>Notifications</b></h3>
-            </div>
-          </div>
-          <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-desktop"></i>
-            </div>
-            <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Accept Token?</h5>
-              Yes / No
-            </div>
-          </div>
-          <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-music"></i>
-            </div>
-            <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Accept Token?</h5>
-              Yes / No
-            </div>
-          </div>
-          <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-car"></i>
-            </div>
-            <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Accept Token?</h5>
-              Yes / No 
-            </div>
-          </div>
-            <div class="profile__contact-info-item">
-            <div class="profile__contact-info-body">
-              
-            </div>
+            </p>
           </div>
         </div>
       </div>

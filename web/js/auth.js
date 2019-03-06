@@ -27,6 +27,7 @@ signupForm.addEventListener('submit', (e) => {
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     return db.collection('users').doc(cred.user.uid).set({
       name: signupForm['signup-name'].value,
+      DOB: signupForm['signup-dob'].value,
       address: signupForm['signup-address'].value,
       country: signupForm['signup-country'].value,
       skill: signupForm['signup-skill'].value,

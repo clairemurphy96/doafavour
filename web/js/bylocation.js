@@ -109,9 +109,18 @@ var roofRef12 = firebase.database().ref().child("otherskills");
     roofRef12.on("child_added", snap => {
         combined.push(snap.val());
         
+        var returnnewtoold = combined.sort(function(a,b){           //returning newest to oldest date
+           var keyA = new Date(a.post_date),
+               keyB = new Date(b.post_date);
+            // Compare the 2 dates
+            if(keyA < keyB) return 1;
+            if(keyA > keyB) return -1;
+            return 0;
+       });
+    console.log(returnnewtoold, "returnnewtoold");    
     console.log(combined);
     //displaying contents of the array into the div class 'table_body'
-    combined.forEach(function(o){
+    returnnewtoold.forEach(function(o){
     console.log(o);
     $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b> " + o.post_date + "</b></p><p><b>Name: </b> " + o.post_name + "</p><p><b> Location: </b> " + o.post_location + "</p><p><b> Message: </b> " + o.post_message + "</p><div class='row'><div class='col-12 col-md-1'><p><b> Email: </b></p></div><div class='col-12 col-md-3'><p onClick='myFunction(this)'>" + o.post_email + "</p></div><div class='col-12 col-md-3'><button class='btn foode-btn btn-sm active'>Click email address to copy</button></div></div><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
     });

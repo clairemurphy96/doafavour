@@ -1,8 +1,8 @@
 //Connecting to Firebase Realtime Database 
 //https://www.youtube.com/watch?v=m3TMPyQNAVs&list=PLGCjwl1RrtcRTbJ9WBL9exbUFNqwzz9if
-   
+
    //Saving posts to the database
-  function save_post(){
+function save_post(){
    var post_message = document.getElementById('post_message').value;
    var post_location = document.getElementById('post_location').value; 
    var post_name = document.getElementById('post_name').value;
@@ -32,7 +32,7 @@
        window.alert("Please fill out the message field");
    } else {
        var updates = {};
-   updates['/cleaningskills/' + uid] = data;
+   updates['/bakingskills/' + uid] = data;
    firebase.database().ref().update(updates);
    
    alert('The post is created successfully!');
@@ -60,24 +60,25 @@
     } else {
         console.log(toEmail, subject, text, "email");
       
-      var data = {
+      var Emaildata = {
             "toEmail": toEmail,
             "subject": subject,
             "text": text
       };
-      console.log('just data', data);
-      console.log('strigified', JSON.stringify(data));
+      console.log('just data', Emaildata);
+      console.log('strigified', JSON.stringify(Emaildata));
        $.ajax({
         url: 'http://localhost:4000/api/v1/sendemail',
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
+        data: JSON.stringify(Emaildata),
         dataType: 'json'
         
       });
       window.alert("Email Sent!");    
     }
   }
+
   //Writing posts back from the database using innerHTML
 var roofRef = firebase.database().ref().child("bakingskills");
     
@@ -88,7 +89,7 @@ var roofRef = firebase.database().ref().child("bakingskills");
         var message = snap.child("post_message").val();
         var email = snap.child("post_email").val();
         var postdate = snap.child("post_date").val();
-        
+
         $(table_body).append("<div class='contact-content-area'><div class='list-item'><p><b> " + postdate + "</b></p><p><b>Name: </b> " + name + "</p><p><b> Location: </b> " + location + "</p><p><b> Message: </b> " + message + "</p><div class='row'><div class='col-12 col-md-1'><p><b> Email: </b></p></div><div class='col-12 col-md-3'><p onClick='myFunction(this)'>" + email + "</p></div><div class='col-12 col-md-3'><button class='btn foode-btn btn-sm active'>Click email address to copy</button></div></div><button type='button' class='btn foode-btn' data-toggle='modal' data-target='#myModal'>Reply & Help and earn some tokens..</button></div></div>");
   });
   

@@ -1,3 +1,5 @@
+/* global firebase */
+
 //Connecting to Firebase Realtime Database 
 //https://www.youtube.com/watch?v=m3TMPyQNAVs&list=PLGCjwl1RrtcRTbJ9WBL9exbUFNqwzz9if
    
@@ -31,8 +33,9 @@
    } else if (post_message === "") {
        window.alert("Please fill out the message field");
    } else {
-       var updates = {};
-   updates['/cleaningskills/' + uid] = data;
+       
+        var updates = {};
+   updates['/diyskills/' + uid] = data;
    firebase.database().ref().update(updates);
    
    alert('The post is created successfully!');

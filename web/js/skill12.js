@@ -32,7 +32,7 @@
        window.alert("Please fill out the message field");
    } else {
        var updates = {};
-   updates['/cleaningskills/' + uid] = data;
+   updates['/otherskills/' + uid] = data;
    firebase.database().ref().update(updates);
    
    alert('The post is created successfully!');
